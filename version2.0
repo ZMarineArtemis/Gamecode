@@ -28,6 +28,7 @@ label start:
         
 label dialogue0:
 
+
     # 此处显示各行对话。
     e "Come on up...come on up...just you and me, the boat will never be borrowed...just escape to the sea. \n"
     e "...just kidding, but come on up anyway. It's probably not the first time for you to be in a boat, I've been lucky enough to sit in a few, To be honest, this is the first time I've been here as an oarsman. \n "
