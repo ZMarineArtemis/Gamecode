@@ -70,6 +70,7 @@ label dialogue0:
     c "Would you like to pick it up and try it out? This place is definitely a metaphysical sea, which can catch all kinds of fish."
     $ i+= 1
 
+
 # 此处输入钓鱼QTE。
 label fishscreen1:
     call screen fishscreen1   
