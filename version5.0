@@ -1,0 +1,1354 @@
+# 游戏的脚本可置于此文件中。
+
+# 声明此游戏使用的角色。颜色参数可使角色姓名着色。
+
+define e = Character("unknow")
+define c = Character("marine")
+define u = Character("System")
+define i = 0
+
+image logo = Movie(play="logonewsound.webm", loop=False)
+#image whitego = Movie(play="whitego.webm", loop=False)
+#image whiteback = Movie(play="whiteback.webm", loop=False)
+
+image op = Movie(play="op.webm",loop=False)
+image opconnect = Movie(play="opconnect.webm",loop=False)
+image sceneboat = Movie(play="sceneboat.webm")
+image getpole = Movie(play="getpole.webm",loop=False)
+image tutorial = Movie(play="tutorial.webm")
+
+image fishscreenx = Movie(play="firstfishhookedmoon.webm")
+image fishscreeny = Movie(play="fishcatchplayerpull1moon.webm")
+image fishscreenz = Movie(play="fishcatchplayerpull2moon.webm")
+
+image fishscreen0 = Movie(play="firstfishhookedearth.webm")
+image fishscreen1 = Movie(play="fishcatchplayerpull1earth.webm")
+image fishscreen2 = Movie(play="fishcatchplayerpull2earth.webm")
+
+image fishscreen3 = Movie(play="whale.webm",loop=False)
+image fishscreen4 = Movie(play="otter.webm",loop=False)
+image fishscreen5 = Movie(play="swan.webm",loop=False)
+image fishscreen6 = Movie(play="Jellyfish.webm",loop=False)
+image fishscreen7 = Movie(play="Shark.webm",loop=False)
+image fishscreen8 = Movie(play="Trotoies.webm",loop=False)
+image fishscreen9 = Movie(play="octopus.webm",loop=False)
+image fishscreen10 = Movie(play="plastic.webm",loop=False)
+
+image fishscreen11 = Movie(play="returnfishing.webm",loop=False)
+
+image groundcorrect = Movie(play="backgroundcorrect.webm")
+image ednew = Movie(play="ednew.webm", loop=False)
+image ed2 = Movie(play="ed2new.webm", loop=False)
+image write = Movie(play="write.webm", loop=True)
+
+screen disable_Lmouse():
+    key "mouseup_1" action NullAction()
+
+
+
+#textbar
+
+init python:
+    textsize = 0
+    sizevalue = 278
+#    if textsize == 1: 
+#        sizevalue = 700
+
+#default textboxsize = 1
+
+
+# 游戏在此开始。
+label splashscreen:
+    show logo
+    with renpy.pause(6.83, hard=True)
+    return
+
+label start:
+stop music        
+
+    # 显示一个背景。此处默认显示占位图，但您也可以在图片目录添加一个文件
+    # （命名为 bg room.png 或 bg room.jpg）来显示。
+#if textboxsize == 1:
+#    $ sizevalue = 500
+#else:
+#    $ sizevalue = 278    
+
+
+    # 显示角色立绘。此处使用了占位图，但您也可以在图片目录添加命名为
+    # eileen happy.png 的文件来将其替换掉。
+
+    #语言确认
+    #$ label 
+
+label dialogue0:
+    show screen disable_Lmouse()
+    show op
+    play sound "audio/op.mp3"
+    with renpy.pause(43.73, hard=True)
+    stop sound fadeout 1.0
+    hide screen disable_Lmouse
+    hide op
+    $renpy.sound.play("audio/normal.mp3", loop=True)
+    show blackscreen
+    # 此处显示各行对话。
+    e "Come on up...come on up...just you and me, the boat will never be borrowed...just escape to the sea. \n"
+    e "...just kidding, but come on up anyway. It's probably not the first time for you to be in a boat, I've been lucky enough to get in some boat before, but be honest, this is the first time as an oarsman. \n "
+    e "But trust me, this kid can paddle like one of those giant luxury cruise ships. It will be a smooth ride during the whole journey, so come up, it is not easy to talk like this. \n"
+    show opconnect
+    with renpy.pause(3, hard=True) 
+    show sceneboat
+    e "Call me Marine. Call the ship Ishmael. Not important names." 
+    c "Definitely not convenient if we got no name, but there was no way to ask the name of a boat, if people in streets heard that, they deintely laugh about it."
+    c "The man who brings the boat doesn't say a word, it probably doesn't matter to him, as long as you have a boat to get from one side to the other."
+    c "Therefore, I start to wait for you, I don't know how long have been past, I got a daily routine at first, fetching water, washing up, putting on clean dry clothes, washing those dirty ones, and washing the boat with filtered seawater." 
+    c "I try to make myself busy."
+    c "I don't know actually how many days have passed, maybe a few days, maybe a few decades, A box of clothes became worn and hard, I should remember that you shouldn't wash clothes with seawater."
+    c "Anyway, that explains everything, sort of, even though it sounds a little bit sophomoric. After days, I turns to woke up at a random time for searching tree branches that had been pushed to the shore by sea waves."
+    c "It's a metaphysical coastline, like every coastline in each Bourgeois novel, where people can't starve or die by doing nothing, death and time are out of concern of the protagonist." 
+    c "I dont take those branches for trading. People do not need anything to make a living here. I collect them to build my existence"
+    c "Occasionally fragments of public-art works are flowing within the ocean, waves bring them to the land. "
+    c "On the other side, there are mountains of rubbish, called serious literature, sealed up and brought here by the truckloads. "
+    c "I was wandering between the two places since the beginning. It's a very long, boring story if I told from the beginning, like a story of stretching a wire from a ball of wool."
+    c "But there is still an autonomous panic from nowhere when you just watch the dusk climbing up the sky step by step. "
+    c "At some point of life, a person can only sleep well if some kind of wealth is mature enough for that day. "
+    c "Fortunately for me, I got those branches of tree. there will always be some branches flow cross the ocean. "
+    c "I threw those ones with oddly funny shapes back into the ocean, expecting others to find them. And kept the rest of them. "
+    c "I am expecting others to find it, I tried to avoid some question such as who really wants them... they are useless outside of this island, it's always an act of atonement, serves for some impurity purpose."
+    c "I process some branches to tools on day. "
+    c "See this fishing rod I made out, that is the best one so far. "
+    c "I fished with it when I was waiting for you, this is a magical sea, literarily, merged with everything, comics, animation, Hollywood movies, pop music, of course, games, and a wide range of imaginations, but there is only no fish."
+    c "Maybe because I do not know anything about fish, or you can say, anything about life in a nature condition."
+    c "There was a time when the public know exactly what they were doing, everything seemed to be getting worse, but they went ahead and did everything evil anyway."
+    c "Those times were called the era of cynicism, when the thinkers, the revolutionaries, tried to criticise such a life, to awaken the conscience of the public and make things better... "
+    c "...or at least not worse."
+    c "Of course, they failed, as they always do, both side of them. "
+    c "The era of cynicism is such an age. For me, the first question is not what the public really believes or does. "
+    c "The question is where are their lifes? Not those fantasy one, but the nature, original one."
+    c "In the end, everything loses its critical power, loses its power of statement, remaining works of art to a place with nothing more important than a gyroscope spinning around, only service for killing time between life and death."
+    c "Eventually, in the process of spinning, I realise the fact that you will never come, "
+    c "or rather say, it seems that you may come retrospectively at the end only if I land off first, like making a game, where the player always has to communicate after the design destinated the diction of communication,"
+    c "but the paradox is a game should always be played with a mind to enjoy it first before it can be called a game."
+    c "Rather say, from the perspective of life, whether if swimming in the middle of thrilling waves or snail-paddling, making a game at home, it may always be the same thing."
+    hide sceneboat
+    show getpole
+    with renpy.pause(2.96, hard=True)
+    show tutorial
+#    $ sizevalue = 700
+#    init python:
+#        style.rebuild()
+    c "This one is yours now. Since you've arrived here now, we'll have to sail on, and it's no longer useful to me."
+    c "Move your mouse, and left-click the highlight place, the fish will then be hooked, as simple as that."
+    c "Would you like to pick it up and try it out? This place is definitely a metaphysical sea, which can catch all kinds of fish."
+    stop sound fadeout 1.0
+      
+    $ i+= 1
+
+# 此处输入钓鱼QTE。
+label fishscreenx: 
+    $renpy.sound.play("audio/normalshort.mp3", loop=True)
+    call screen fishscreenx  
+    screen fishscreenx():
+        add "fishscreenx"
+        imagebutton:
+            xanchor 0.5
+            yanchor 0.5
+            xpos renpy.random.randint(12, 88)/100
+            ypos renpy.random.randint(15, 85)/100
+            idle "testhit_idle.png"
+            hover "testhit_hover.png"
+            action Jump("fishscreeny")
+
+label fishscreeny:
+    call screen fishscreeny
+    $ x += 1  
+    screen fishscreeny():
+        add "fishscreeny" 
+        imagebutton:
+            xanchor 0.5
+            yanchor 0.5
+            xpos renpy.random.randint(12, 88)/100
+            ypos renpy.random.randint(15, 85)/100
+            idle "testhit_idle.png"
+            hover "testhit_hover.png"
+            action Jump("fishscreenz")
+
+label fishscreenz:
+    call screen fishscreenz  
+    screen fishscreenz():
+        add "fishscreenz"
+        imagebutton:
+            xanchor 0.5
+            yanchor 0.5
+            xpos renpy.random.randint(12, 88)/100
+            ypos renpy.random.randint(15, 85)/100
+            idle "testhit_idle.png"
+            hover "testhit_hover.png"
+            action Jump('fishscreen'+str(i+2))
+
+
+label fishscreen3: 
+    show fishscreen3
+    with renpy.pause(3.29, hard=True)
+    jump fishscreen11
+
+label fishscreen4:
+    show fishscreen4
+    with renpy.pause(7.66, hard=True)
+    jump fishscreen11
+
+label fishscreen5:
+    show fishscreen5
+    with renpy.pause(4.13, hard=True)
+    jump fishscreen11
+
+label fishscreen6:
+    show fishscreen6
+    with renpy.pause(3.83, hard=True)
+    jump fishscreen11
+            
+label fishscreen7:
+    show fishscreen7
+    with renpy.pause(5.46, hard=True)
+    jump fishscreen11
+
+label fishscreen8:
+    show fishscreen8
+    with renpy.pause(4.53, hard=True)
+    jump fishscreen11
+            
+label fishscreen9:
+    show fishscreen9
+    with renpy.pause(4.16, hard=True)
+    jump fishscreen11
+            
+label fishscreen10:
+    show fishscreen10
+    with renpy.pause(4, hard=True)
+    jump fishscreen11
+
+label fishscreen11:
+    hide groundcorrect
+    show fishscreen11
+    $ renpy.pause(2.73, hard=True)
+    jump groundcorrect
+
+label groundcorrect:
+    show groundcorrect
+    jump expression "dialogue"+str(i)
+
+
+label dialogue1:
+    $renpy.sound.play("audio/normalshort.mp3", loop=True)
+    hide tutorial
+    c "......\n..."
+    c "..."
+    c "As I said. I cast the hook many times while waiting for you. "
+    c "Fishing turns out to be a pleasant experience somehow, although I never have a chance to catch a single fish myself realistically speaking... "
+    c "Fishing is too expensive, like many other activities which transfer from a farming thing to a social game. "
+    c "Besides, I don't like fish anyway. Neither do I like feeding them as pets or eating them. It's like some kind of creature from the future for me, eventually, perhaps also with a real distaste for the sea."
+    c "To be honest, the process of love is like making a mummy: "
+    c "extinguish the last possibility of revival by decomposite the body with strong acid, soaking it up, then redintegrating its appearance by a subjective bias. Bind it up, and finally, name the mutilated corpse and fall in love with that name."
+    c "Only a Don Quicotean disgust left here. "
+    c "For those kinds of stuff which the subject can't do anything about it. It seems that one always has to paradoxically fall in love with someone, and one can only maintain true faith in love in the absurd."
+    c "But... those are just too useless metaphysical definitions... "
+    c "One should always be realistic and rational, you see, it is after all a society that loves only can only give to strangers. "
+    c "Treating playing as a job, trip as a necessary work. Once a man can really do that, there will be no problems remain. "
+    c "Going to work and doing what the banners say, leaving work and assimilating the life in ads, the rest of worries seem only some mere nuisances that are brought by tiny thoughts."
+    c "The same logic applies to games, play games in the way they are designed, enjoy them the way designers told, and everything will be comfortable and entertaining. "
+    c "Enjoy the game, and feel the joy. But personally, after a time that I am not aware, I started to feel like I couldn't hold on to anything. "
+    c"I used to believe that when something turns digital,  exists in cyberspace, could make that one immortalised... "
+    c "but in conclusion, there is no such thing that can escape from the gravity of decay... just like there is no such game which can have eternal fun... "
+    c "When you touch the old game you believe it is the best, you imminently know something has changed, changed forever."
+    c "I've always had nowhere to go but to sit here on the beach for a long time... "
+    c "for what seems like an eternity. "
+    c "Playing games and watching popular TV are the only few things I can do, "
+    c "or I can choose to stare at the sky which doesn't even have a point - at least games were given definite meaning by someone before they were sent here."
+    c "But still, I often wonder what is the meaning of games, these meanings often are given as a form of dreams by designers, and eventually, they agree that pleasure from games is important... "
+    c "but in my case, almost all games, all of them, don't seem to have any space for my pleasure. "
+    c "I still play them almost only because it's the only thing I know. "
+    c "I almost don't know any other way to spend my time, and suddenly I am too old to know that. "
+    c "In recent years, I seem to prefer to turn a game on, sit by the monitor and stare at the sky, "
+    c "a journey of waiting for a game seems more satisfying to me than the actual gameplay, which I guess is what is called Consumerism."
+    c "I thought, maybe I should look for something deeper... "
+    c "maybe then at least I wouldn't be bored in consumerist psychology. I started looking for the answer to the art of games, the definition of the aesthetics of games. "
+    c "Ironically, despite being hailed as a form of art, I ended up having to look for the artistic value of games in essays about game designs which weren't even the opposite of art."
+    c "The French New Wave, Post-Structuralism, the Pop Art movement. Art forms seem to have been able to engage in a degree of self-mapping and critique those days, "
+    c "but games cannot be fully self-critical... meta-games can only add some extra rules to break the rule. It is similar to the case of Uriboist literature."
+    c "Of course, this is not to say that the meta-game or the Uribo school is inferior to the former, everything got its special value. "
+    c "As you may have noticed, this game exactly relies on Calvino's coiled linguistic structure. But going with one method is one thing, only getting one method is really another."
+    c "I've cracked on a lot of game design books in the time I've been waiting for you, and I've certainly played a lot of games, but let us just only talk about books here, it is much more straightforward."
+    c "There are all sorts of definitions of games in those books."
+    c "One book even says that the first step to becoming a game designer is to shout that I am a game designer... "
+    c "I couldn't stop to think while reading it, if all you had to do to become a real person were to shout that you were a real person. That would be a wonderful world."
+    c "In summary... each book seems to be unable to satisfy my purpose. Not because there's anything wrong with it, but it's like a fancy dessert produced in a fancy factory and then served up by a fancy mechanical doll. "
+    c "A too humanistic and intellectual technology knowledgeable words in place among the lines. It is merely as if human beings had never really existed rather than embodiments of an abstract good."
+    c "There is a book with a hundred pages on how to use a chain of equipment to make a game system, stating all sorts of tools, and in hindsight. Such work is invariably respectful from my perspective, really honest respect."
+    c "But on the other hand, it seems to me that the more it is stated in this way, the more it pushes the game to the other side of art. It's like a hundred-page protracted escapade ---- from the answer to one fatal question."
+    c "Of course, in an era like this days, we don't even need to mention games, art itself already becomes a delicate question. "
+    c "On the one hand, one of the signs of the postmodern era is the blurring of the dividing line between refined art and vulgar entertainment, "
+    c "while on the other hand, serious art and popular entertainment have never been so stratified to the target group, due to the technological shift and ideology barrier."
+    c "Pretty much at the same time as Soviet film directors and Eastern European artists were attacking their art was tied to the party state, "
+    c "calling the public and artists to be concerned with the real individual underneath those grand narrative styles. "
+    c "Japanese philosophers were attacking their new generation of literary figures for abandoning social responsibility and only writing books so-called private fiction with a total concern with the realities of individual subjective own feelings."
+    c "The liberal artists' associations would go on to award medals to an artist who promoted a really Nazi Nationalism in most of his artworks, "
+    c "recognising their contribution to the arts but ignoring the concept of the goodwill of art. "
+    c "The neo-academy in some universities tried to capture the value of a particular art piece in the rational process of thinking and making it, "
+    c "but in terms of its impact, this neo-academy even became a pejorative slang term."
+    c "From the formal structure, strictly speaking, art was dead long before our generation of artists and writers discover its body. Like a bad detective novel."
+    c "However, from another perspective, it seems that this is why art is still truly loveable. The most important thing about a bad detective novel is not about who that dead person is, "
+    c "but about enjoying discovering how that man is dead from a series of narrative tricks. "
+    c "Anyway, that's what natural love seems to be all about, alienated from some pedantic narcissistic necrophilia psycho condition."
+    c "Every creator of this generation is like the prince who comes out at the end of the story of Snow White, forcing self compulsively fantasising about such a great quest which ends at the start. "
+    c "The same logic is present in games. "
+    c "Every game designer fantasises about redeeming games, giving them a higher meaning, making them a part of art, but the reality is... the reality is that art has long since become irrelevant. "
+    c "Lurking underneath the situation is a double crime, a copycat, and a copycat's copycat, both of whom coincidentally commit their murders with the same logical consistency."
+    c "Unlike the fairy tale, of course, the prince who is the copycat offender not only fears the real sobriety of the princess, in order to complete his quest, she must sleep as deep as death. "
+    c "He also has to pretend to sacrifice everything ---- to the degree that he actually does sacrifice everything at a certain point. "
+    c "Really sacrificing everything to bring everything back to the place it was in the beginning. By using a sort of Greek tragic structure."
+    c "When the author is honest, without going for any simplification interaction. "
+    c "Making a game out of long, long shots, and complex interaction mechanisms, applying a little bit of life logic at the end, even the story of  Mario can produce some kind of tragicomedy. "
+    c "A film version of such a tragicomedy would be called 'Taxi Driver'. Oh thanks Mario, but the princess is in another castle."
+    c "These core issues of the crack life logic and games can be discussed later... It seems only to be possible to discuss them retrospectively ---- one metaphor story followed by another ---- after it's all over to really understand them. "
+    c "Excluding that really central question, it seems to me that at least one question can be answered. That is, what is a game?"
+    c "As same as within this game, "
+    c "the obvious question is that if I were to print out every frame of this game, if I were that rich, and bind each frame into a comic, wouldn't the content of this comic, for what it is, be no more and no less than the game."
+    c "So what exactly led to this virtual object being called a game."
+    c "Of course, there is a whole range of philosophical proofs method here, from metaphysics, and oenological thing-in-itself to post-modern dialectics, from Plato to Derrida."
+    c "But leaving aside those important but no one-cared discussions, from the nominal, the social, the subjective, and the objective, "
+    c "to put it in a nutshell, it is better to say that there is no difference between the two forms in terms of content, the only difference is the difference of the form."
+    c "Generally speaking, from an ancient traditional perspective, a game is formed as a particular structure, which would be thought of as a collection of rules. However, from my perspective, this seems to be a fallacy."
+    c "On the one hand, if one looks closely at the history of non-electronic games or games played by children, with the dimension of a sequence of time, many games have rules that are added later, retroactively to previous acts. "
+    c "Does that mean that there are no rules for prior behaviour?"
+    c "For example, two children play with water pistols, one shoots the other with that pistol, the other happily shoots back, both of them are having fun at that moment, "
+    c "but one accidentally aims at the other's eye. "
+    c "They then laid down the first rule of the game, no aiming at the eyes, and decades later the game was sold to many people as a video game, electronically and with a series of rules. "
+    c "But the question remains: when is the origin of the game, whether it all began with the first trigger is pulled or when the rule of not being allowed to aim at each other's eyes?"
+    c "Two girls lead a horse which only exists in fantasy around a playground. They are pleased, they believe they are playing a secret game, and socially, from the school's point of view, "
+    c "they do play a game, but there are no rules which can be spoken out. Or rather say, the game will be over, once a rule is out. The only thing left afterwards is to be forgotten, to be buried."
+    c "On the other hand, a question concerned with subjective perception, if a rule does not exist for the players, or for the designers of a game, does it still exist?"
+    c "The latter situation is often found in player communities, and it is common for a game to have different rules in different communities before the internet kicks off and connects regions to regions. "
+    c "Then the former is a much more common thing, such as a game's bludgeoning algorithm. "
+    c "Is that necessary that a player has to read the game like a contract and fathom every aspect of the rules before he can say he is playing the game?"
+    c "You might be thinking, does any of this matter? "
+    c "At least, it seems to matter quite a lot in its special structure to me, one is from the perspective of the game designer ---- the earliest and most original game designer of an individual, "
+    c "and the other example is from the perspective of the game player."
+    c "Under these perspectives, under a set of rules, games seem to take on a structure that goes beyond the rules. "
+    c "Games cannot be simply categorised as a set of rules. It would resemble what is called surplus jouissance, which defined the game as a non-existent part."
+    c "The concept of rules in games seems to be an obsessive fantasy for the sake of modern games being able to be able to make in digital form, "
+    c "which is why modern video games are very different from table games, which have subtle, unspoken rules for improvising and staying alive the game."
+    c "But games, on the other hand, are indeed a series of interactively oriented, structurally constituted objects. "
+    c "In other words, interaction can be naturally simplified and act in the form of rules. The rules are nothing more than the form of the object of interaction, "
+    c "and because of the natural properties of video games, this object of interaction targets the artificial simulated personality most of the time, "
+    c "but interaction in nature is not actually limited to the rules... "
+    c "one might even say that this is a compulsion present in the industrialised culture of Western civilisation, sexual interaction in its most pure form is the example of interaction without rules. "
+    c "As for the content of the game, the content of the interaction, it seems to be unimportant. Content here not only refers to the category of story, but also to the style of graphics and music."
+    c "To put it bluntly, the game seems to be able to reduce to a kind of animation with an interactive play structure... or a novel, a lifestyle, a movie... the list goes on."
+    c "Of course, this interpretation is a kind of play-centrism that negates other aspects of the game's elements. But it is precisely this centre that defines a game."
+    c "The other elements seem to exist entirely independently of the gameplay, as same to Shakespeare's plays. Reading Shakespeare's plays is a thing, but watching Shakespeare's plays performed is another thing."
+    c "On the other hand, with such a mechanical interpretation, the game is nothing more than an interaction of what keys to press and what animations roll as a reward in the vast majority of the time."
+    c "Players are like lab rats, rewarded for pressing the right key and punished for pressing the wrong one. The difference is that some games are very humanistic, punish gently, and some are less humanistic. "
+    c "Of course, it's all humanism in summary, and the inhumane games cannot be produced in the industry at the start."
+    c "As for the content of games, in this era of live streaming, the content of games can be made available to everyone in a video format. "
+    c "The problem that the format of interaction faces is as same as the problem Mary faces when she gets out of her room. "
+    c "In my opinion gaming content can be broadly divided into two categories. One category is content that serves the gameplay. The other category is content that acts as the game's driving force."
+    c "The former example is of course Nintendo's classic games and the latter can be seen as Sony's cinematic games."
+    c "Serving gameplay is not just about providing a place for gameplay can be happened, "
+    c "but more importantly giving players a legitimate, ethical ideology to play this game." 
+    c "The player is made to understand that everything he or she does is not of the player's own volition sometimes, the player is compelled to do certain things... "
+    c "even in Animal Crossing, where the player is compelled voluntarily to make money, forms part of the gameplay. "
+    c "This volition is essential to the concept of meaningful choice, and even rather say, there is no meaningful choice in the game if there is no that volition."
+    c "In fact, this is the core reason why there is some structural conflict in games."
+    c "There was a prevailing argument that violent games promote violence, crime, and so on. "
+    c "Experience of course knows that this is not quite true. But on the other hand, if carrying this experience through to the end, then why do we need a game rating system by age again?"
+    c "The emergence of game rating systems seems to prove that at least certain games can contribute to violence, crime, and so on under certain conditions and for certain groups of people. "
+    c "The more interesting question is precisely why, why this interpretation explains certain effects and why it is ethical to do something in games that cannot be down in reality."
+    c "An inappropriate example here is a deaf child with a kind of scleroderma, who may also be the only deep skin person in the light skin community. "
+    c "This child communicates daily with some professional teachers with gesturing, which is like a shamanic witch to children who have nothing prior knowledge about such diseases. "
+    c "But can such an uncommunicative, scleroderma-stinking, totally different-skinned person be treated as an anomaly that needs to be dealt with?"
+    c "And if this is not okay, then in a naive subjective view, why is it okay to deal with a goblin who is sleeping in a random field in Legend of Zelda?"
+    c "Of course, players knew that it was programmed and knew full well that if he woke up, he would be a threat to players. There was nothing intelligent about him, nor was there anything special about him."
+    c "But the thing is, subjectively, it isn't that a logic of thinking is held in a cynical position. "
+    c "If the goblin is only programmed in our subjective thoughts, why are we satisfied subjectively by eliminating it? "
+    c "Of course, we sympathise with the black, scleroderma-deaf child ---- as long as she stays away from us in reality so that we can ravage her constantly, constantly in the virtual world."
+    c "Of course, games are much more complicated in reality. The vast majority of realistic, legitimate, grandiose, actions also require such ideologies. "
+    c "Like 'Satan's Tango', where the liar actually implements social change. These are the hard-to-define areas in reality."
+    c "Content-driven games on the other hand seem to be much simpler, content-driven games... just like this journey, with the gameplay itself masking the absence of actual, critical style."
+    c "Detective novels are an ancient form of content-driven games. "
+    c "The player reads the novel, interacts with the textual evidence, gets caught up in the narrative shenanigans, "
+    c "eventually looks at the denouement of the book, sees how his or her reasoning fails, sighs, and throws the book in the trash can."
+    c "The paradox is that, for the most part, once this detective book is actually playable, the style becomes irrelevant."
+    c "Patrick Modiano is arguably the master of contemporary detective fiction, "
+    c "but the fact is that his detective fiction merely preserves the structure of a detective novel, which he used it to draw circles. "
+    c "That means, his novel got this structure of someone looking for the truth about something that has already happened. But in his case, there will be no truth, no so-called clues, "
+    c "and what is more, the subject already knows all this from the beginning, but he has no choice but to try, decide not to hope and not to live anymore, by using this structure, "
+    c "Modiano indicates the split of the life and subjective. "
+    c "His work is like creating a labyrinth circled by a compass. The detective format is that compass for sure. "
+    c "It is not the circle drawn by the rule that is important to the player, but the places that are not drawn, the gaps between the centre and the periphery of the compass. Those places define what is a Modianoan style."
+    c "Technically speaking, the increased playability of the play means that the player is more easily directed to that line. From a style-centralist perspective is to put the cart before the horse."
+    c "Only speak for myself... I wish this image of the sea would disappear. As I said before, I loathe the sea."
+    c "But on the other hand, the visual is essential to the journey, the sea has to be there. "
+    c "also had to compromise. But I can't say that this compromise really has any aesthetic significance, it's just a commercially essential thing that really common here."
+    c "Commercial...I would care about commercials these days, a wired perspective from myself."
+    c "People always say that art requires compromise, but when they comment on real art, they always refer to 'maintaining a certain spirit in such an environment'. To maintain a certain spirit."
+    c "Raph Koster's 'A Theory of Fun for Game Design' seems to be one of the most underrated textbooks on game design for me; "
+    c "Koster is sensitive to the cracks in the form and content of games and discusses the importance of the game's unique form to knowledge."
+    c "Pleasure is important he says, ultimately taking a leap of faith towards his beliefs."
+    c "I often think that if I had been born in Europe or America during the golden age of capitalism in the 1960s, I might have been able to say from the deep of my heart that pleasure is important."
+    c "But that's just a fragment of a daydream. People always have such unrealistic dreams when they are young, but after a certain age, even dreams are a luxury."
+    c "Happiness is anxiety enough in itself. It is not even as Schopenhauer said that happiness is the absence of pain and boredom, but rather, as Kafka said, one needs to live carefully lest happiness finds you."
+    c "In Zizek's fashionable words, it was a time when 'there was no sugar in Coke, no nicotine in cigarettes, no alcohol in drinks'... game in that era is the last carnival of capitalism."
+    c "Collecting RPG systems is becoming more and more complex, more and more like clocking in and out of work. "
+    c "Failure penalties are getting bigger and bigger to fuel the player's increasingly inflated desire to win. The way of charging fees is becoming more and more like gambling. "
+    c "All of those are not to make the game more fun, but on the contrary, to give it a touch of compulsive guilt... "
+    c "If you were to wander back and forth through the player community, you would always hear the argument that the new games are not as fun as the old ones."
+    c "Sure, one could argue that it's a form of nostalgia, but in my opinion, it's necessary for new games to be unfun, in order to make a game to be popular these days, it has to come with some level of unfun or overcharge. "
+    c "Only with such a sense of guilt can make today's players really paradox enjoy the game. "
+    c "In fact, the old games were no different, the arcade games of that era increase the difficulty of the game to a degree that almost forced players to play extra, it was just a matter of how much for each individual case. "
+    c "The extra money that players paid finally defined players to tell themselves that they had a right to enjoy the game, then to force themselves to enjoy it, so much so that, eventually, players can actually enjoy it."
+    c "Of course, this also leads to another issue, which caused the gaming community becomes more and more important. "
+    c "Previously, companies tried to maintain gaming communities in major regions with locks and special offers of content to hold the power of leading communities, at least some important ones. "
+    c "And now... as this restriction goes weaker, the new generation of game designers even no longer seem to have any power to control a game, including the basic drive at the very core of the game."
+    c "One example is Hideo Kojima's earliest 'Metal Gear'. He took 'Metal Gear' to an offline exhibition where most players play it like another version of ‘Contra’. "
+    c "At that time, the technology was difficult to solve this problem, and since the offline players had already tried this game even when he came back and solved this problem, a community of players would gradually form after that. "
+    c "Hideo Kojima then thought that he could tell every player before they played, that it was a new genre of game called Tactical Espionage Operations and that players needed to infiltrate rather than fight. "
+    c "This worked so well that it led to players instinctively choosing to play sneakily despite the fact that in this version of 'Metal Gear' the payoffs of combat were just no different with sneaking."
+    c "Now that the driving force of players even no longer needs to be provided by the game designers, the position of game designers has become like the position of software designers. "
+    c "Rather say, morden software designers have learned the most important interaction design skills from game design. The new generation of software is more or less like a simplistic, pure, old-fashioned game with only structure left. "
+    c "One swipe and a new video begin to play. One tap and the positive feedback begins. Video swiping is like a slot machine, social software is like acting as a family game."
+    c "If you want to compare, the old fashion game is like the relationship between an authoritarian government and scattered people who tend not to communicate with each other. "
+    c "Today's games are increasingly like constitution-makers, the gaming community is like a parliament that operates according to the rules of the constitution, and the average player is the person who chooses the parliament."
+    c "Game designers are increasingly left only to be able to make transmission mechanisms and incentive structures."
+    c "...I don't know if you have any interest in politics "
+    c "---- this sentence is always subtle, it doesn't feel subtle when you say it, but it sounds subtle ---- "
+    c "The only problem is it seems to be the most accurate analogy I can imagine coming up with."
+    c "Most people around me...when I used to belong to certain groups, most people always disliked politics, as it should be."
+    c "'For who would bear the Whips and Scorns of time, The Oppressor's wrong, the proud man's Contumely, The pangs of dispised Love, the Law’s delay, The insolence of Office, and the spurns, That patient merit of th'unworthy takes. "
+    c "When he himself might his Quietus make With a bare Bodkin? Who would Fardels bear, To grunt and sweat under a weary life'"
+    c "... 'Hamlet', politics is the scourging and ridicule, the abuse and the cold eyes for them, even in modern days."
+    c "But I personally think that game designers need to understand some political science. "
+    c "Game design is ultimately a hybrid model of political economy and constitutional engineering for one person, or a small group of players after all."
+    c "Like Raph Koster, I'm betting my faith on the culture of what is called social capital. "
+    c "That is to say, the structure of games may indeed be the most capable of forming a certain social culture, and constructing a certain kind of social capital that has never been here before."
+    c "Games can be like a mixture of musical opera and performance art, where the game designer designs the play, a certain ideology of that designer lurks under the stage, "
+    c "and the player is both the actor and the audience of the play at the same time, which really drives the play. "
+    c "Games can be a form of peaceful revolution, giving space for audiences to critique the players at such a short distance."
+    c "If a game could be structured in such a way, and spread widely, perhaps society could also abandon some old ideology to the greatest extent possible and build a society that could accommodate anyone. "
+    c "Furthermore, if it could incorporate some aesthetics... but then perhaps it would be a shame to talk about aesthetics. In short, by then, games might actually can be games."
+    c "Of course, this is only a certain belief, in reality, games contain countless ideologies that the politician would be ashamed to display. Games that don't do that often have no market to make a living."
+    c "There are even games that clearly preach to remove certain inherent prejudices as much as possible, but then add a lot of such and such stereotypes into their structural style."
+    c "After all, the game market has a game-like structure. Advertising with deep dark fantasy is the primary rule of this vast structure."
+    c "Games made with effort may fail badly, but those promoted with effort will at least not lose their money."
+    c "That's the way of the world running for the rest of these days."
+    stop sound fadeout 1.0
+    $ i+= 1
+
+label fishscreen0: 
+    call screen fishscreen0  
+    screen fishscreen0():
+        $renpy.sound.play("audio/normalshort.mp3", loop=True)
+        add "fishscreen0"
+        imagebutton:
+            xanchor 0.5
+            yanchor 0.5
+            xpos renpy.random.randint(12, 88)/100
+            ypos renpy.random.randint(15, 85)/100
+            idle "testhit_idle.png"
+            hover "testhit_hover.png"
+            action Jump("fishscreen1")
+
+label fishscreen1: 
+    call screen fishscreen1  
+    screen fishscreen1():
+        add "fishscreen1"
+        imagebutton:
+            xanchor 0.5
+            yanchor 0.5
+            xpos renpy.random.randint(12, 88)/100
+            ypos renpy.random.randint(15, 85)/100
+            idle "testhit_idle.png"
+            hover "testhit_hover.png"
+            action Jump("fishscreen2")
+
+label fishscreen2:
+    call screen fishscreen2
+    screen fishscreen2():
+        add "fishscreen2" 
+        imagebutton:
+            xanchor 0.5
+            yanchor 0.5
+            xpos renpy.random.randint(12, 88)/100
+            ypos renpy.random.randint(15, 85)/100
+            idle "testhit_idle.png"
+            hover "testhit_hover.png" 
+            action Jump('fishscreen'+str(i+2))
+
+
+label dialogue2:
+    $renpy.sound.play("audio/normalshort.mp3", loop=True)
+    c "......\n..."
+    c "..."
+    c"To be honest, I've changed my mind slightly, I kind of like the sea for now, just a little bit."
+    c "There's always a conversation that can't be carried on, 'The more honest I try to be, the more the right words recede into the distance.' --'Hear the Wind Sing'."
+    c "There are always things that I want to say, and probably need to say. But it is not always possible to say it. It is necessary to keep silent in order to make it as easy as possible to say it..."
+    c "I should make a fun boating game, with a metaphysical beauty site close to players, the player enters the game, picks the loveliest avatar from a bunch... or maybe the funniest one..."
+    c "and goes on a date with that beauty."
+    c "One of them putts, the other fishes, chat about where to eat, what happened at school or the workplace, how life is going, and the daily chores, but the realistic honest daily is not expressed in that form they present at all." 
+    c "Daily life... daily life is more silent...speak with inappropriate words." 
+    c "It's like the part in the film 'To Live' where Chunsheng comes in the middle of the night..."
+    c "talking about empty words that everyone can't figure out, distant empty shots, and a piece of opera music that plays out from the beginning to the end."
+    c "After the rowing, the game could end with an animation in which the two beauties have dinner together, and then move to the bed. "
+    c "The next day, the man proposes to the woman and the game ends in such a romantic atmosphere. So that nothing could be wrong, the game could sell well if advertising well."
+    c "But the question is I can't do it well, my mind is so deprived of imagination that I can't write a story like that from my heart. "
+    c "I've met countless writers who rail against immoral activities ---- in socio-political and pop culture ---- and it's surprising that the vast majority of them see those activities as nothing more than a lack of imagination. "
+    c "They suppose responsibility and morality exist when people use their imagination at first. "
+    c "On the other hand, from my personal point of view, the opposite seems to be more reasonable:" 
+    c "it seems to me that the group of people who can really be called literature writers today are precisely the least imaginative ones... "
+    c "They cannot imagine a perfect person, a perfect world, a perfect life at a perfect point in time, so they have to keep writing the pale, real life day after day, about morality, about responsibility. "
+    c "They always got this kind of wishful thinking that if they could only be patient enough to their heart, and something could be reconciled with someone, a miracle would happen."
+    c "'In 1961, a year after I started writing my novel. I had to leave everything behind. I felt that if I were patient enough with myself, a miracle would happen.' from Kertesz Imre's diary."
+    c "What exactly is this so-called miracle and with whom exactly must one reconcile? 'It is impossible for a writer to create a world which is more stupid than what God has created.' Still, quote from Imre's words..."
+    c "I was born at a time when everything was not enough, only mainstream TV shows, mainstream animation, mainstream music."
+    c "The only thing that wasn't mainstream was those piracy games. "
+    c "The games were pirated copies sold within a bundle in dark, damp alleys, printed with unintelligible text and the cover was drawn with what would now be called soft porn pictures."
+    c "It was a lovely time. "
+    c "I would say that in those days if I had any real connection with people, it was not because of a good family or a good teacher, but thanks to those games I dug out from the wet corners. "
+    c "And of course, like everything I remember from my early childhood, those game discs are long gone forever."
+    c "Afrofuturistic bands remind me of those days. "
+    c "Fulu Miziki, to be precise. It is the pure stuff, pure joy, and another side of that joy, pure chronic suicide. Perhaps the musical structural counterpart of Afrofuturism... "
+    c "is a post-punk band from the former Soviet Union region, both with a very similar musical concept but their styles run counter to each other."
+    c "There is always an immorality lurking in art..."
+    c "the audience does not share the author's suffering but stands in a higher dimension to watch the author's dilemma—Camus' point. You can also see the same thing in Tarkovsky's films."
+    c "This immorality is embodied in the manners of those works of art that were born in the former Soviet Union regions, but which eventually only spread out in Western Europe. In more Western..."
+    c "more Western places, Chaplin perhaps even more brilliantly interpreted this theory."
+    c "In a political conclusion, perhaps the Beatles' song 'Back to USSR' represents the Soviet Union's public artwork best from this formal Soviet perspective. An ironic view with danger."
+    c "Perhaps the subject in the eyes of the object is always closer to the subject than the subject itself thinks, "
+    c "not because there is something missing in the subject's perception, some blind spot, "
+    c "but because there is always something more in the subject's perception about self, the subject is always wishful thinking and admitting too much to some non-existent spirit from the self. "
+    c "It even acts as if the subject would not be able to live at all if the subject stops doing this."
+    c "In reality, of course, it is inevitable that the subject will not survive, that is to say, the subject will die in any case whatever he or she did. "
+    c "Not being able to live can only be spoken precisely from the perspective of the subject."
+    c "Morally speaking, life should not be talked about in terms of results. But one has to talk about morality only after the protagonist's life has been capped."
+    c "There was a time when music was more popular than ever, and people talked about it in the same way as the Greeks talked about the sublime. It seemed that a man's character could be gleaned from his taste in music."
+    c "There was also a group of people who believed in music at that age, before that, groups of people believe in utopian social reform, and further before they believe in something pragmatic like national beliefs and gold... "
+    c "further on? Further on it could be some kind of religious belief, there is plenty of it."
+    c "In any case, one has to believe in something. And of course, in the end, beliefs ultimately fall flat."
+    c "Music certainly can't save your moral souls, just as you can't teach me to dance really slow in this game."
+    c "Music, as well as others, deservedly failed, and the utopian that build rely on it reintegrated it constructed into the empire of capitalist consumerism."
+    c "Whether yuppies or hippies. Both have faded away for a long time."
+    c "...or maybe it's just a matter of starting over in a different way, in a different place, in a way that doesn't rely on music anymore, an insight with a certain old Eastern Buddhism tradition."
+    c "Of course, there is always a non-metaphysical, straightforward scientific approach to the period: "
+    c "A time when pop culture was relatively barren, a time when music was widely available as a public artefact because of the cheap price of the radio, compared to the high cost of television and film, "
+    c "in addition to the personal computer and graphics technology that had not yet been invented."
+    c "The years of peace are always passed over in such a way in order to make plenty of room for those glorious times."
+    c "As Churchill said, 'If the British Empire and the Commonwealth had lasted a thousand years, this would have been her most glorious moment.'"
+    c "I suppose that even the most justifiable wars still need as many excuses and as much glory."
+    c "Mankind has evolved and had civilisation for thousands of years, but it seems that not much has changed in terms of life, which is still animalistic, and if we abandon that kind of life... "
+    c "it seems that we can't even be human."
+    c "Civilisation, from the animalistic point of view, from the human point of view, it seems to be nothing more than a formal industrial madness, like putting a cork in a beer or winding up a clock into orange."
+    c "'Loneliness is the leprosy of the twenty-first century.'"
+    c "'A widely held view, but also, in my opinion, a potential masculism idea to it possibility extreme. "
+    c "At least, women have been lonely and hysterical since history started. "
+    c "It is only with the rise of women's rights in the twentieth century, after the vast majority of men no longer held the right to own anyone, that loneliness ironically spread so dramatically."
+    c "Even more ironically, even this widespread loneliness is nothing more than an animalistic disease. There seems to be nothing more humans can do to change the way of living at all."
+    c "But not, of course, in the world of public media. Games, Cinema, where man seems to be able to escape the constraints of the animalistic way of life and create a new, romantic, unfeasible life, "
+    c "where whole of a sudden, imagination comes into play."
+    c "This is perhaps the most central appeal of public art."
+    c "So, from the dimension of public art, in order to make that unfeasible life as free as possible from the most primitive animalistic zeal, "
+    c "it is the only way that the audience's interest in that piece of work becomes focusing on the plausibility of the setting of the world, the likability of the characters and so on. "
+    c "Not needing a few decades, these things end up affecting the author over round."
+    c "The least important thing in science fiction artwork is science fiction. Today's scenario is a complete inversion situation."
+    c "Personally, I even think that Bellatar's ‘Werckmeister Harmonies’ could be tagged as the best science fiction for centuries—just a private opinion, with no reason supporting it."
+    c "I don't know if you like films or not."
+    c "Of course, I don't really know anything about films."
+    c "I don't know anything about cinematography, framing, montage, or anything like that."
+    c "I was a ticket seller at a cinema for a period of my life, I can only access films because of my job."
+    c "I had just broken up with a friend at that time and they continued running the shop, I am out of it and got some cuts. "
+    c "It was a stationery shop next to a suburban primary school. Not much money. I sent it home once a little bit several times, and my parents both had only a few pensions. "
+    c "They give their savings to a relative blood member, for business I guess, and they get some payback once a few years."
+    c "A few more schools opened there afterwards, but the friend's shop was not able to stay open. "
+    c "I do not sure if it is because someone reported the shop to the police, or because the city administration fined the shop a lot of money for somehow operating illegally. "
+    c "After that, the shop was rented to a local bookstore with several other shops next door. The bookstore is probably still open today."
+    c "I stayed in the city for another couple of years after the closure, "
+    c "sell machines that support study in another chain bookstore during the day shift and worked as a ticket seller in a cinema on the top of a department store near the underground station at night."
+    c "I got a dog at home."
+    c "The dog was given to me by a friend from college time who did an internship with me and finally decide to get a job in another city at that time, hard to say that is a promotion. "
+    c "Before he left, he looked around online and couldn't find a way to carry the dog on the train legally. So he entrusted it to me. We lived in the same apartment at the time and watched the dog grow up, "
+    c "luckily for him, the dog knew me."
+    c "He said that the dog was a hybrid dog brought by his family because they had heard a fortune from someone who said that he needed a dog to get married. "
+    c "So they picked the purest coloured dog from a neighbour and brought it to his house by bus."
+    c "The hair on the dog's back was sparse when he grew up, not a good look, but close to humans, didn't bark much. "
+    c "The hair on his back became even less after I got him. Even now when I think about it, I feel indebted to that friend."
+    c "However, we haven't actually spoken to each other since he left, most things in life are like a story without a significant start or end."
+    c "I came home one day and found the dog gone, with some peenies in a box, and all pennies disappears even less than a buck, the house hadn't been rummaged through. "
+    c "Until today I had never spoken to anyone about that dog, as if it had never existed. Perhaps the dog had been sold to a better owner and was living a life where his fur was no longer sparse. "
+    c "Or maybe it went into someone's belly with spoons of stew. "
+    c "No matter what happened. I seem to be relaxed when I know it disappears, and after that, I decide to do nothing."  
+    $ i+= 1
+    call screen fishscreen0   
+
+
+label dialogue3:
+    $renpy.sound.play("audio/normalshort.mp3", loop=True)
+    c "......\n..."
+    c "..."
+    c "Anyway, in those days, I worked as a ticket seller for a while, and although my job in the contract is a ticket seller, "
+    c "I spend most of my time in cleaning the theatre, maintaining the popcorn and drinking machines and so on. "
+    c "There were often a few screening halls with no audiences inside during the night shift. A few older staff would sit in there and squint, "
+    c "it would be best for them if the film is a romantic foreign language one because it is easy to take a nap without distribution. Of course, it wasn't possible to sit there for the whole movie, "
+    c "usually only for ten or twenty minutes, after that, "
+    c "one of them would get up and pat the person next to him or her, waving his or her hand in a distance to those people on the back, and everyone would silently exit from the theatre and return to the actual world."
+    c "I first learned about films from those clips in the cinema, "
+    c "and after that, before getting to this beach, I was only able to access films in a few minutes of summary videos. "
+    c "There weren't many opportunities to watch films back then, even not need to mention the limited ways."
+    c "There were always those kinds of slogans, like saying that books are the ladder of human progress. There were all kinds of slogans for movies as well."
+    c "Isn't it often said that cinema increases the experience limit of mankind? Experiences that would have taken years can be squeezed into a single film. "
+    c "People treat films like instant coffee. In fact, from a commodity perspective, there is no longer much difference between the two nowadays. "
+    c "It's just that most cinema tickets are still a little bit more expensive than a cup of instant coffee."
+    c "As I said before, it's always possible to say something in an objective way which isn't this metaphysical, and that's also applied in the case of films. "
+    c "But from a private perspective, a film to me always means to be made for audiences that 'already know it'. On the contrary, for those people who 'don't know', the film actually got nothing to say. "
+    c "Like Satro's theory of interventionist literature... "
+    c "It may indeed be possible to write a masterful literary work that only uses a play on words in Esperanto ---- although it exists only in the fantasy of language ---- but cinema, "
+    c "even the fantasy of cinema can only exist in a certain time, to a particular group. "
+    c "Cinema can only be explained as a mere footnote to its real life. "
+    c "A great film in history can only be the one that, against all troubles and without taking any position, interprets a fact that has long been immutable ---- to the point of making that fact acceptable and humanistic."
+    c "There is always a scenario in that one knows it, but can't accept it. Any cinema technique is used for that here. It's all about making that known but unacceptable thing less bitter when people accept it."
+    c "'We think it's the reality that's too cruel, so we have to escape to the dream world, but it's really the dream world that's too cruel and we have to escape back to reality.' Lines from ‘The Pervert's Guide to Cinema’."
+    c "The greatest fascination of cinema comes within this kind of self-abuse. Once audiences get into the cinema and sit in their seats, the audience is forced to prepare to accept what they already know is coming."
+    c "So it seems to me that those long shots, those empty shots, those one-shots. They are the method of confession. A kind of self-doubt. "
+    c "A kind of uncertainty about life, about livings in such a world, about the uncertainty of logic of how everything works."
+    c "On the contrary, those short shots, those montages, are a fuel, a thrust towards orgy in the midst of this absurdity, and ultimately towards destruction."
+    c "Of course, in public terms, this is nothing more than a bunch of meaningless worlds. Videos of the five-minute watched a film have flooded the internet for decades. "
+    c "One has to act like the butcher in 'The Turin Hourse', pay the money, get the wine, walk out of the house and return to the desolate storm."
+    c "However, through the storm, The cinemas are no more than shut down or closed for the best."
+    c "An allusion, but unlikely to be true, is that Marquez was particularly like one of the characters when he created 'One Hundred Years of Solitude'. "
+    c "But eventually, she had to die. 'I had to kill her,' Márquez said to his wife in tears, 'the logic of life had to let her die.'"
+    c "Of course, everyone knows that---- arguably since Shakespeare---- the logic of life has long been divorced from morality and fallen apart into pieces."
+    c "There is no longer a hell waiting for the wicked, and there, of course, is no heaven for the good. "
+    c "'King Lear' is about the truth that you can love anyone with the most devout faith, but you must not ask for any morality in return, "
+    c "one must understand that, behind the love scarification, there always be an abyss of doom."
+    c "The logic of life no longer has an agenda or a guide, but only a certain generalised experience with private philosophical metaphors that lurk underneath... "
+    c "Rather say, these metaphors underneath constitute the attitude of the author to the logic of life itself, distinguishing between different creators."
+    c "Take popular public fiction as an example, 'Gosick' is arguable quite a big name in this field. It sets the story between World War I and World War II, a story which in short... "
+    c "could be described as a metaphor for an intelligent Italian Jewish girl who falls in love with a foreign student with a different skin colour who has been a little bit discriminated by most of the others. "
+    c "A chapter of it is about a political crisis caused by the fornication of that Italian queen who gives birth to a coloured child."
+    c "Its natural personal atmosphere or concept from the beginning to the end makes it special as a public artwork. "
+    c "It is an interesting argument that in some cultures, in the culture of 'Gosick', the pieces of literature in those cultures, those wars, and race, are relevant to everyone while not being relevant to everyone's private life. "
+    c "Things have to be conquered by a thousand people united with the same spirit in those pieces of literature, each one within the same race has to take on the hatred of the nation, responsible for the great justice."
+    c "On the one hand, as a public artwork, 'Gosick' breaks down its own cultural barrier, creating an ideology of privatised war and race that even serious literature in the cultures has not succeeded in portraying. "
+    c "But on the other hand, the story and character itself remain very public and abstract, far away from life."
+    c "This public and abstract are not from the inappropriate case detective method but from the retrospective perfection and unbelievability process of love and the character's psychological journey. "
+    c "And the end of the character is not from their own fate... but from the wish of the readers."
+    c "But at least, the cheesy fairytale-like ending for both protagonists is not annoying, as it is in Dickens' literature. Even with all the rational criticism, one is still emotionally struck by a certain relief."
+    c "'Sorrow comes from no place, it rains outside the window, sit on the sofa, eat chocolate, read Dickens and have a compromise with the world.'"
+    c "It is said to be from Tolstoy in some places, but it is still true to some degree doesn't matter if it is not spoken by Tolstoy."
+    c "It is rather unfortunate, but certainly obvious: the author of 'Gosick' won a more prestigious literary prize after this and has declared that she will only engage in more serious literary writing afterwards."
+    c "Even though I said these kinds of words for so long, criticising a specific work has always seemed to be an over-industrial thing to me. "
+    c "In the purpose of artistic production, the ultimate aim of criticism seems to be somehow a side-tracking of interpretation. As for interpretation... "
+    c "as Susan Sontag says, it is always too much... "
+    c "For me, an artwork can only be born out of a great prejudice, even if I know it is a prejudiced instance at that moment when I put my pen to paper, but I can only write with that prejudice... "
+    c "'Action makes mistakes.' words of Hegel. 'The revolution must always be premature.' Rosa Luxemburg's idea. "
+    c "Art is created in the same way, the work of art is always created before the artist really understood it, most artist understands their work of art in this way. "
+    c "The most deadly, or I should say the most classical critique, is perhaps intertextual. Just as Plato did, in the tone of Socrates, critiques Homer for imitating the gods..."
+    $ i+= 1
+    call screen fishscreen0   
+
+
+label dialogue4:
+    $renpy.sound.play("audio/normalshort.mp3", loop=True)
+    c "......\n..."
+    c "..."
+    c "Meanwhile, outside of this voyage, I happened to be reading Zweig's ‘Die Welt von Gestern’. "
+    c "Zweig said goodbye to the homeland where he lived for a few decades, was forced to live around many countries and wrote this half-documentary, half-farewell work to yesterday and the past."
+    c "He begins the book by saying that the idea of writing a book with his own sight never occurred to him during his life, he believes that he was not special enough to be a protagonist. "
+    c "All thing he was trying to do in this work, is to outline a world...a world of yesterday that belongs to him and belongs to that generation."
+    c "Reading diary-style literature is always fatiguing. Not because of the complex background of that period, but because of the purest form of showing time nakedly. "
+    c "The time is just like the outskirts of thirsty rice paddies, once piled up, glory within years, but only a muddy, windswept pile of dams left for now."
+    c "People born in this industrial age always think as there is some presumed life that has been taken away from them by some immoral method. "
+    c "Maybe it was the same before the age of industrialisation. "
+    c "They hated the action of taking their own life away in the same way as the protagonist boy in ‘Capernaum’ questioning his parents at the end. "
+    c "But the truth is there is no such life, people pretend to see nothing, at least to ignore the majority but important part of it, therefore people actually cannot do anything to shift the fundamental life itself. "
+    c "The fundamental problem is always the most important, delayed problem, those problems will usually be quested out by one, and others would tell that one to shut up. "
+    c "Like 'King Lear', the only thing that seemed to be able to change was to hold on to one's own beliefs. There seems to be no alternative choice of life to the one who wants to change her or his life."
+    c "Creativity, an unfamiliar word, does that means to write about real life with those original assumptions, or write about a life that was metaphorical but unchanged. "
+    c "For me, because of a lack of imagination, it seems to be the latter."
+    c "How exactly to create... 'My Craft' allows players to build entire worlds... at least imitatively to build. "
+    c "But is it really possible to create some surpass of self in the game? Sure maybe it got the potential. "
+    c "If the game can really change the culture of society, as I said before, the only meaningful interaction seems to be to let players create...to create a new, belongs to the individual's social culture. "
+    c "Maybe here, in the long wait queue, a miracle will happen..."
+    c "I grew up in an era of regular, but of course, the past is always regular, and everyone has a regular era that is just for them. "
+    c "Like other slogan words, the meaning of 'regular' only stays in a formal structure and is nothing but an empty form in terms of content. "
+    c "Nevertheless, I still call it a regular era, the only regular era of mine. An age which is so regular that people even didn't think about it."
+    c "Everyone was so busy that they couldn't be bothered by those regulars. "
+    c "Everything seemed to can be better, boats could be built bigger, pork could be fattened up larger, technology and art could be mass-produced. "
+    c "Everyone had such confidence and every family carried a rush of desire. Stones were often turned into gold and pills of clay were occasionally used to cure diseases."
+    c "A world like that cannot be described in terms of secular morality ---- at least this description itself is immoral ---- morality, morality is always the result of pale one-sidedness. "
+    c "In the end, morality is just like a light cloud of smoke in a Buddhist temple,"
+    c "where the believer has to buy a few pillars of smoky incense first, then has to ask a senior monk to pray for it, then light it, "
+    c "worship it, and finally insert it into the incense burner, turn over his head and disappear into the crowd, choking the later to unable to open eyes."
+    c "If you cut out the madness from Emil Kusturica's films, or erase the doubt from Kafka's lines, it would be the best photo of that era."
+    c "Eventually, of course, I grew up and the regular places were no longer completely regular. Maybe it is best to say the regular is the last thing you could experience as a child at least, "
+    c "rather than the era of the regular disappearing without me realising it."
+    c "It is never easy to describe the past; it would be meaningless without honesty in it. But in order to be honest, one has to be prepared to shut up and remain silent."
+    c "As a result, the past in my statement would be like someone else's past. The subjectivity, the ego, the individuality, they are all gone somewhere else. "
+    c "It is unknown whether they are lost in the statement or if they actually never existed in the first place."
+    c "In the end, only an ambiguous causally inverted testimonies are left to confirm such times existed once upon time."
+    $ i+= 1
+    call screen fishscreen0   
+
+
+label dialogue5:
+    $renpy.sound.play("audio/normalshort.mp3", loop=True)
+    c "......\n..."
+    c "..."
+    c "I remember leading by my second aunt on the road, and she always walked very fast, women born in the countryside never had that easy leisurely of a city lady often got. "
+    c "Life for them seems to be just a boat ferrying between two sides of the river, one bank is her men, and the other is her children, "
+    c "they are used to crossing the river quickly in the turbulent stream, this is the only way to squeeze some time, do some casual work, save some money for their parents, "
+    c "so there would be not got some fault which people can mumble about behind her. "
+    c "Sadly the truth usually is that if their job cannot be put on the stage ---- most of the jobs they can have are not honoured enough to be put on the stage ---- they will always be mumbled by their relatives-in-law."
+    c "At that time I had just lived in her house for some days. "
+    c "One night I heard my mother coming to visit, I was sleeping in bed at that time. She turned on the light, sat beside my shoulder, pulled the blanket up for a bit, and then went out to chat with the aunt."
+    c "My eyes were closed and I didn't know whether I should tell her I was not asleep or not, I believe if I pretended to wake up at that time, things would get very messy."
+    c "I couldn't remember much of what they were talking about that night, most of the important things only remains like this, only a certain warm muddy feeling left after a good night's sleep."
+    c "My second aunt's phone rang and she drops my hand and tried to find it in her bag. She stays behind, waving another hand to indicate me to go front for a little bit first."
+    c "We went to see the train that day. "
+    c "A unique new generation train was speeding past us and the school wanted all children to visit. "
+    c "I heard it could run on forever without rest from the teacher. No child knew where it came from, and no one cared where it went. "
+    c "Surely some teachers must have told us somewhere and probability have even written it down somewhere, just no one cared."
+    c "After the news spread out, I guess everyone would like to go to see it, a town of people, thousands of towns. Everyone built the train together, everyone also built the track together. "
+    c "Therefore, everyone got the right to see it. Teachers also said that some of the biggest names would also sit on the train, have a chance to visit places, and get in touch with us."
+    c "As I suspected, the tracks were crowded with the public, not just students and parents, but also dozens and dozens of young people who hadn't made families yet. "
+    c "We were huddled in a corner, my aunt still on her phone. "
+    c "One of my classmates and her mother were standing right in front of us, and I hadn't spoken to her once at school; she noticed me, gave me a stare and continued talking to her mother."
+    c "She felt there were too many people so she wanted to back home. "
+    c "Her mother just hold her hand and didn't respond at all, maybe she didn't hear, but the girl grabbed her mother's cloth again and I saw her mother look down in a very small movement and glance at her for a flash moment. "
+    c "A burly policeman squeezed past, a rifle held in hand, because of the squeeze, she snorted and stared back at the policeman for a while until he disappeared into the crowd, she was completely silenced after."
+    c "I don't know why, it may be caused by the child's nature, "
+    c "suddenly saying and doing things that are totally irrelevant. "
+    c "Although I was at an age where hard to be described as a child at that time. To be a child always means to be in a complicated age."
+    c "I suddenly told her my uncle was a policeman and he got a gun."
+    c "She didn't say anything, quickly stared at me for a while, then turned her head back and crouched down, doing nothing, gazing ahead."
+    c "Her mother looked back and my aunt smiled at her while she still answered the phone."
+    c "Children always seem to grow up instantly after a certain frame of time, and her frame is in that moment, leaving me alone."
+    c "The train took a long time to get in front of our eyes, "
+    c "but it looked like had suddenly appeared from nowhere, "
+    c "the crowd was suddenly agitated, a few policemen push and walk through the crowd, and a talking voice with electronically amplified noise by a loudspeaker came from the outer layers. "
+    c "The train went slowly, but every window was widely shut with white curtains so that nothing could be seen from outside. "
+    c "I could only see rows and rows of people between the leg of my front row of people, and I only know what trains look like afterwards from the students in front, "
+    c "they said there are sentences written on the surface of the train, the latter one repeats the former, a long line after another, over and over again, "
+    c "but they just couldn't read completely once, and they also said that there was someone at the front had been knocked out by the train and no one dared to go up to see that man's body until the train was gone far away."
+    c "When the train was really far away, a couple of policemen herded the public like herded a crow of sheep, my aunt grabbed her bag on her shoulder and stuck to me holding my arm, "
+    c "as we walked down the main road, surrounded by the hustle and bustle public, a group of people who haven't catch up to see the train was already been pushed by us to return their way back to their homes."
+    c "We followed a stream of people into an alleyway and sneak to the end of another sideways next to the river embankment. "
+    c "With no one around and only a few cars speeding past, my aunt was relieved and took her bag off her shoulder, only grabbing it in her hand. When the light turned green, "
+    c "we walked over to the sidewalk on the other side of the road. "
+    c "A few flat boats floated on the river, rusty and laden with some unknown crops which were put in some red sacks. Sunlight pours into the captain's cabin, reflecting only black silhouettes. "
+    c "A summer sunset wind blows by, the steam sounds of boats play in the distance, and then even the cicadas fade away, "
+    c "leaving only the sound of river lapping at the shore. The crowds and the trains seem like a story before a lifetime. "
+    c "All of a sudden, when a boat flow next to me, I even thought I could give up my life, go with it, and change every part of my life, only if I could get up to that boat.  "
+    c "Once, perhaps once, there was a time when life was continuous and people could write straight about their past. "
+    c "Writting diaries or letters, there was always no need to beat about the bush, everything could be laid out straightforwardly, and everything could be recorded one by one, a simplicity era."
+    c "Nowadays, it is the era within transcriptions, one's past only lives from the mouths of others, and old memory is gazed at from the perspective of strangers. "
+    c "Living, but only to rehearse how to live, when that day comes--that impossible day -- they will be able to live freely. Such rehearse passed on from one generation to the next, from one era to another era. "
+    c "That is what has been called civilisation."
+    c "Why, then, why am I talking about such a past? "
+    c "If I mean to record something, but I can still remember a vague structure, and will always be able to remember that vague structure, "
+    c "as for the things I have forgotten, they did not exist in the first place, those things cannot be told in words, and cannot be shown in images at the beginning. "
+    c "If I mean to declare something, but who will listen, would you will fully aware of those things that I cannot even tidy up? "
+    c "Of course, no one really cares or knows what really happened, and I don't understand it at all... "
+    c "I think it is only for the unborn, to tell the unborn that long, long ago, there was this land where children who live there got this story..."
+    $ i+= 1
+    call screen fishscreen0   
+
+label dialogue6:
+    $renpy.sound.play("audio/normalshort.mp3", loop=True)
+    c "......\n..."
+    c "..."
+    c "When he entered junior high school, he was not tall, "
+    c "wearing new, but not very new shoes, packed into a uniform, wearing thick-rimmed glasses and got the exact same hairstyle as the next person standing to him, "
+    c "the only thing that identified him in his graduation photo was his cheesy, ape-like arms."
+    c "He and his friend, two of them crouched under a barred window, the sunlight just touches their hair and hitting the ground, everything is frozen, "
+    c "one dressed up in a black and yellow down jacket out of her school uniform, which had deflated a little, showing a little duck down at the joints, the already dirty black and yellow colour becoming like an oil infestation. "
+    c "The rubbish basket was next to them, in the side of the shade, some bottles and cans, some napkins, things that can be found everywhere on campus, but they all looks frozen because of the reflection of that winter sun. "
+    c "The sunlight only stayed in such a small area, everything else was like a forest after dusk, with sharp, heavy shadows spreading out over a side of each's face."
+    c "A few boys were pushing and shoving each other just a few steps away from the front of them, and people were still growing continuously, a group bumping into one another. "
+    c "In the end, everyone was indistinguishable, and it made no sense to distinguish them. "
+    c "They were talking and laughing, and there was a cheer every time they bumped into each other, like some ancient crucial ritual that men have passed down from generation to generation. "
+    c "Of course, they would eventually come to a fight, because of an unprovoked impulse. "
+    c "Begin by one of the boys who slams the other much harder, and the other would kick back. "
+    c "The two would end up scuffling, and some people would go up and try to pull them apart, but those persuaders would finally fight together, like some kind of contagion virus. "
+    c "Finally, the outermost few would flee back to their seats, turning back to peek at the silent ruckus that kept expanding."
+    c "Eventually, one of the students in the front row would report everything to the teacher, who would pick up some books and quickly join this little informer silently standing at the front of the stage, "
+    c "gazing at the class through the rays of sunlight. "
+    c "Some of the clever ones like noticing something changed, returned to their seats in silence, while the stubbed ones need to take a little longer to realise what was really happening, "
+    c "followed the example of the others and returned to their seats. "
+    c "The teacher will stand for another few minutes, sweeping his eyes sight over every student who is worth noticing, when the bell ring, the noise from outside of the classroom fades away quickly. "
+    c "Another unknown amount of time passed before he asks the person standing next to him, who has been smug all over the time, to turn on the light and go back to the seat. "
+    c "Then finally he would start to say something with a serious tongue about life and duty, "
+    c "and then at some point, just like he can't find anything to talk about, or maybe because his long-pressed emotions have just finally exploded, "
+    c "he would suddenly yell out loud, to the student for most of the time, but some times also to the pop culture, mainly those foreign cultures, "
+    c "because he does not need to say the actual artwork but only to say the name of the produced countries. "
+    c "He is too busy, the school director's meetings are enough to keep him busy, and he can only catch a glimpse of culture from news reports or private conversations among teachers between meetings. "
+    c "In the end, he always asks the students to report each other, who started it, who was most active, and all sorts of things. "
+    c "If the reported people are those ones with bad grades --  it is like a hat trick, whatever people chose, the reported ones are always the people who get bad grades -- there would be a long and convoluted process awaiting them. "
+    c "The punishment is slightly different each time, depending on the mood of the teacher on that day. Fortunately for us, there was never a shortage of time in that period of life."
+    c "For us, perhaps the only thing we could learn in secondary school was that the only people in the world who could impersonate a policeman without being detected were secondary school old male teachers. "
+    c "They wore the same transactional hair, wear the same disproportionate shirts, and plastic belts that couldn't hold his big belly. "
+    c "Wearing square-toed black leather shoes, which they always ask their wives to polish the shores to shine. The keychain pinned to their waist is like a brass bell that can be heard no matter how far away. "
+    c "They speak in similarly instrumental terms, the mean-spirited tone would always, "
+    c "at some point, very reluctantly link together those anachronistic gentle words to family, group, state, nation, and students' names would be replaced by nicknames."
+    c "One of them was called Brainless and the other Unhappy by the teacher, and gradually, everyone called them that, "
+    c "and it became a trivial matter who was called Brainless first and who was called Unhappy first. Nowadays, even the two men themselves are a matter of indifference."
+    c "Brainless is like some kind of large dog who is always not able to read a sentence coherently but only reads word after word, like a witch doing some kind of evil spell in old history. "
+    c "Brainless had to read a line several times before able to understand it, and when Brainless communicated, Brainless often muttered several times alone what others had just told, "
+    c "and was, in the words of the teacher, a child who did not get anything right. However, Brainless still was good at sports, ran very fast, and seemed done very well at mental arithmetic as well."
+    c "Unhappy is always dazed, expressionless, and got a much slower reaction than normal. "
+    c "People can often see Unhappy being twisted by parents to the school, pulling Unhappy to stand in the doorway of the office room. "
+    c "Unhappy always crouched somewhere, even in a chair, curled up, clutching an empty bag upon his leg, occasionally shouting hysterically, "
+    c "then being talked out from the seat by the teacher and thrown out the door, every time Unhappy would stop naturally when getting tired of shouting. "
+    c "The voices also go hoarse. Then a few hours after, Unhappy would be picked up again by the family, twisted the ears by someone who looks like Unhappy's father, carried outside the school and taken away by an electric cart."
+    c "When Unhappy stayed with brainless together, the two neither said or did anything, nothing more than crouching under the window in the spare time. A past that could hardly be called a moment of friendship."
+    c "One day Unhappy got a mobile phone, an old type, with a couple of fingernails-sized green screen showing black pixels that could not be read straightly under the sunlight. "
+    c "A gluttonous snake was built into it, and Unhappy gave it to Brainless to play with, and after playing for a short while, Brainless gave it back to Unhappy and rather want to watch Unhappy play. "
+    c "The teacher came up, followed by some students, and the phone has been taken over. Unhappy was left without his phone afterwards for years. Looking back from afar, each long period of time was frighteningly brief."
+    c "Nearing graduation, Brainless was persuaded by the teacher to go to vocational educational school after, being dropped from this current school and losing his junior high school educational certifications or any document. "
+    c "The next day the teacher went on with his classes as usual, saying nothing, and it didn't take much time for people to forget about Brainless as if Brainless had never been to this school before, "
+    c "like the person has been consumed by a crack of the earth in all of a sudden."
+    c "Unhappy also has been persuaded to continue study on vocational education, "
+    c "'I knew a few people in the flight attendant course who got decent job after graduate, at least you are luckily pretty enough, how about studying flight attendant?' the teacher said in front of Unhappy's family."
+    c "The family only smiled bitterly, quietly slipped a few envelopes into his sleeve. "
+    c "The next day the teacher spoke to Unhappy again about this, saying that Unhappy had to go back and talk to the family that he had a conversation with the officer in charge, he talked to that guy, "
+    c "and plead for Unhappy, but the school opinion is at least to apply for the exam outside the school, "
+    c "and after that, he patted his trousers and staring at the toe of his shoes, he then seems to notice Unhappy is still here, wave his hand to let Unhappy to go back. "
+    c "The family did not say anything when they heard it, only gave Unhappy a thick envelope for giving to the teacher the next day. "
+    c "If the child is not smart enough, would only suffer the parent, they mumbled the next day when Unhappy was getting to the school."
+    c "The teacher did stop saying anything after, some students who had never met slightly joined the class, and some familiar students just stopped coming. "
+    c "Every day before and after school, the teacher would say a few paragraphs with so much passion that even he almost yelled out in the end, "
+    c "and there were always a few smart students who could predict the right time to clap, and then the whole class would clap followed with him." 
+    c "The teacher was already far from the prime of his life, but his voice had never aged, "
+    c "after each speech, he would spit some into a rubbish bin and then act as if nothing had happened, his voice neither raspy nor muffled. "
+    c "Unhappy never saw Brainless again after this, and not even sure if Brainless really existed, maybe Brainless never existed in the first place, no classmate ever talked about, and the teacher never mentioned. "
+    c "Inadvertently everything just settles down by its own rule and sinks into the ocean."
+    c "There is a common sense of every educator, as that teacher often says, if one looks closely enough, standing close enough to inspect, "
+    c "that man will dare to say he or she is able to tell who in this class will get ahead in the future, "
+    c "who will be unsuccessful and will only be bullied. Who will become a civil servant and serve this country, "
+    c "who must be a businessman and contribute his or her effort to the city, but who could only able to rely on little charities to make a living."
+    c "Whether he said is true or not remains unclear to anyone, K guesses he can only be true in this question to the end of the universe. "
+    c "The school itself is an isolated place, friendships between classmates are like loosely knotted shoelaces that are twisted haphazardly, nothing survives in the outside world in the end but only a few broken fragments of words."
+    c "K escaped from the shattered fragments of the old life, the life of the college, and the life of the city. "
+    c "In those years, the large cities were full of people like K, who had thrown away their past, leaving from different towns and cities, from hundreds of small cities all over the country, "
+    c "sleeping in dormitories with a few people at night, riding electrical motorbikes in the morning, eating packed lunches provided by factories. "
+    c "If someone can get a little better job, or if his or her family does not need too many things from him or her ---- K has never met anyone who got that kind of family, "
+    c "K guesses maybe those types of people who were born in that kind of family don't have to come here to work ---- then that individual may be able to rent a single room in a slightly remote area with one or two colleagues, "
+    c "and eat some hot meal together occasionally."
+    c "K has stayed in a few cities before he came to this one, and finally decided to stay in this medium-sized, isolated city which is a bit similar to his hometown. "
+    c "He was almost thirty at the time, which was not a young age anymore. "
+    c "His parents expected him to find a nice girl to carry on his family's blood, not need to be a good-looking one, "
+    c "but it would be best if she is a clean, polite virgin, as they had heard from somewhere that girls in large cities would like to mess up with dubious man. "
+    c "As pension money for their old age, K guesses they probably wouldn't dare to ask for anything more."
+    c "K went home once in the season of New Year, and when his relatives found out that K had left the large city and was going to end up in a rural area like this hometown, "
+    c "they all came to appease his parents, as if K had done something shameful, One by one, they dragged his parents into a corner and mumbled next to ears. "
+    c "Since then, K has known that staying on the outside is far much better than in there, even though eventually there is no place for him anywhere except this town, but at least, nobody knows what happens between that times."
+    c "When K was a kid, there is an advertising slogan spread to anywhere: "
+    c "'Learn maths, physics and chemistry and you'll never be afraid to go anywhere in the universe...' "
+    c "But as a result, whether you studied maths, physics or chemistry, your family and town always pull you back to where you should originally be. "
+    c "Of course, it was K's own fault, he did not study well enough and wasted his youthful years."
+    c "K found a job in a tutoring class in the basement of the city library, Helping parents to supervise their primary school children to do homework and nursery care for them after school most of the time, till nine or ten o'clock. "
+    c "The staff dorm was about ten minutes away from this library and although it was called a staff dorm, it was actually three rooms in a residential area, "
+    c "one for the male teachers and two for the female teachers, with two or three people living in each room. K live with the other two teachers. "
+    c "They would like to eat together outside and occasionally chatted on the road back to the room, but when they entered the room, no one would say anything. "
+    c "Three of them watch their phones in silence until dark, then the one closest to the light would reach out his hand to turn the light on, off again when one is sleeping."
+    c "Both of them were younger than K. "
+    c "It was doubtful that a man approaching thirty would come into the business, and K had to be more lively and cheerful in front of those parents. "
+    c "But the years always crawl over people fairly, and if K is not paying attention, the scars can be peeked at very easily."
+    c "K worries that he seems to be ageing too quickly, he may not be fit for the job in a few years' time. "
+    c "Most of the children in the class are just as playful as K was in his own childhood time, seemingly exactly the same as his own generation, "
+    c "but with no place for him. Looking at them from the podium, K can hardly remember what he was like as a child, everything looks like a textbook illustration with only one summed-up sentence."
+    c "In fact, K had been here for some years already, those years were shifted as it was freezing out. Most of the students wouldn't stay for a long time. "
+    c "The school had changed from the library to a Pioneers Palace, but apart from that there wasn't much difference. "
+    c "K might have to ask the kids what was going on outside there, they could always sniff out changes quicker than he could, they always had more apps on their phones and always knew what was going on where before K did."
+    c "Some of the kids who stayed longer would also talk to K. After doing their homework, they would show him some fun videos. "
+    c "They would also speak to K like an old chap. If K had nothing to do "
+    c "---- as a tutor in this kind of place, teachers would spend half of their time doing nothing more than taking care of children, and K would make up stories for them, mixed with a bit of half-truth. "
+    c "But the good times never lasted, and K was advised by his boss not to get too close to the students, as there is a nursery eventually, K is a teacher here."
+    c "The students who had been chatting with K were moved to other classrooms, new students came in, new names were written down, and everything started all over again."
+    c "K thought those days were like transcribing a catalogue for a book, and the person transcribing the catalogue didn't know exactly what is inside the catalogue."
+    c "Not many years later, the city launched a political event to improve the education atmosphere, the event is much harsher than usual, the school changed places a few times and opens up with a few forms, "
+    c "but at the beginning of a month all the teachers were dismissed together, K even picked up a batch of students that afternoon secretly, the boss called out the teachers and spoke to them briefly next to the door. "
+    c "That night, he assembled everyone in a classroom again and said the same thing which was told on the morning of the day. "
+    c "The dormitory was available until the end of that month, the boss told them, with the marketing situation outside, it was not easy to get a job anywhere. "
+    c "The boss looks older very quickly over these years, but she still doesn't look like she's almost a round older than K. She brings her kid here occasionally, who is about the same height as K. "
+    c "He's trying to get into a high school when K just come here and should be in college by now. K have heard that apart from this childcare tuition, she also has a ballet and piano affair, which she never actively mentions. "
+    c "Those are rumours from the parents, which are always mixed with lies and facts."
+    c "Towards the end of a month, one of the housemates drank a bit too much and fell down from stairs, breaking his leg. "
+    c "K helped him pack his bag and sent it to a hospital in the suburbs."
+    c "He is a local man, and said he would move back to live with his parents for a while after he recovered, and he is still young, he said in the hospital. "
+    c "But his mother was already old, sitting next to the hospital bed, her hair is white, her skin cannot hang off the flesh of her cheeks so it hangs down to the corners of her mouth, "
+    c "her mouth shut and lips dry, faded and slightly purple. During the time when K was here, she sat frozen in her chair, her eyelids drooping, staring at the yellowing quilt in the ward, blinking just once for a long time. "
+    c "Every time when K's roommate rolled a little bit, her buttocks left the stool, pulling at the quilt, breathing sharply for a few moments, sitting back on her buttocks again, not saying a word. "
+    c "K took some fruit with him when he came, when he tried to get back, he realize there is no water for them, so he bought a couple of bottles of water and carried them back again. "
+    c "The woman was washing the fruit on the terrace. "
+    c "The washed fruit was put onto a cup, there are words engraved on the cup: 'There is no happiness if there is no country, there is no country if there is no party.' "
+    c "K didn't greet her this time, only left after exchanging pleasantries with her flatmate."
+    c "After leaving the hospital, K. planned just to walk back. It was dark at some point K did not realise it, and everything had gone by so fast. "
+    c "The streets of the new district were empty, a large square on the side of an unknown road, surrounded by a few scattered tall buildings of unknown use, several nameless, pare express inns stand by, without any life at all. "
+    c "In a few years' time, there may be some decent restaurants, and gradually there may be a group of square dancers singing and dancing here. "
+    c "Anyone can say what the future will be, but only a few can guess correctly. "
+    c "At some distance along the road, there is a signboard announcing new local achievements and new government plans. The lettering is bright and the posters are eye-catching, the only problem is there is no visitor at all. "
+    c "K is tired of walking, squatted in the shade and sat for five or six minutes before a few taxis sped past on the spacious elevated highway."
+    c "K looked past the bulletin board, one column after another, and one of the boards said that there was a new railway station nearby, connected to the latest high-speed line. "
+    c "K walked down the road to look at it, remembering back to his childhood when he was watching that train, full of people in a modest field. "
+    c "The train rushed by, thick curtains covering the inside of it. "
+    c "K stood in front of the new railway station, surrounded by a flat empty place, two taxis parked in front of a square even bigger than the K passed by, "
+    c "it was at least a three or five-minute walking distance from the taxi point to the entrance, no one was in the taxi, the driver was nowhere to be found." 
+    c "There were three levels of doorways, each one got five steps, and each level had a platform on which thirty people could stand sparsely. On either side of the doorways, there were two stone lions taller than K. "
+    c "The two lions had two strings of plastic wreaths around their necks, one of them had a ball in its mouth, but had disappeared in another. "
+    c "The building overall is like a walled city, with a stone brick design underneath and painted over with a few sparse advertising stickers already visible on the paint."
+    c "Up on the uppermost level, a flag is posted on the entrance to celebrate the official opening of the station."
+    c "Walking into the foyer, three security gates are visible through the glass doors, a security guard playing with his mobile phone sits on the left and three huge security machines are silently operating inside the gates. "
+    c "The guard saw K coming up and waved his hand. There is no train here, he shouted, not taking his eyes off his phone."
+    c "The building had been designed cross-layer, the sun shone through the glass and onto the marble floor on the ground floor. "
+    c "Auxiliary lights were lit in some parts of the roof and the whole building was illuminated. K looked through the glass doors at the ticket gates inside. The inspection lights flickered on and off."
+    c "The guard turned his head to look at K. K had to nod, smiled at him and turned his head to go back down the stair again. "
+    c "Crossing the square, he walked across the zebra crossing and headed towards the dorm. "
+    c "It was not until the sun had sunk completely underground and the afterglow was like floating grass in the marshes that K reached his dormitory, which was deserted. "
+    c "K was exhausted, his back smothered in sweat, which was neither pleasant nor comfortable."
+    c "The next month K took some of the money he had saved before and rented a one-room studio. "
+    c "Before he left, his boss gave him a box of milk, and in those days, his face became quite yellow. Whether it was the piano or the ballet, K thought nothing would not probably last long. "
+    c "Luckily, her children had grown up, as she always said when she mentioned the mess. On the way out, the owner looked around the house and chatted trivially with K. "
+    c "Her child was crouched in the stairwell by the door, a thick whisker above his lips which was already visible as he came down the stairs, wearing a small, dull school-uniform-like outfit with his legs showing outside, "
+    c "not looking like a university student in any way. "
+    c "They came down the stairs together, K carrying milk in one hand and a suitcase in the other, the boss holding her child's coat. "
+    c "K smiled, lifted the milk and said thank again and again."
+    c "K didn't really drink milk, when he was a child he could only occasionally get strawberry milk, the steamed bun sellers always had a row of strawberry milk next to the steamer and a few bottles covered in the steamer, "
+    c "some of the girls' parents always wanted those hot ones. "
+    c "K always collected the plastic bottle in the morning and kicked them around with three or two friends after school in the afternoon, always with a satisfying sound when kicked from far away. "
+    c "As a child, everyone had a classmate who collected everyone's milk bottles and carried a fishing net that was much bigger for a child. "
+    c "When not in use, he would tie it to the outside of the bag that was supposed to hold the water bottles and then carefully place the leftover bottles and cans of the class in it at the end of the classroom. "
+    c "As a child, K, like his group of friends, would kick the bottle far away into the bushes along the school fence in front of the person who was collecting it. "
+    c "K once saw the boy looking for the bottle in the bushes and the boy saw him at the same time, he slapped his knee and ran away."
+    c "K hadn't been drinking any milk since a certain time, when the moment came, anyone had to live with a different habit and pretend the past didn't exist. "
+    c "The sooner you know this sort of truth, the better you like would be turned to. "
+    c "K took a bottle of milk out of the carton, it is a large carton with only six bottles stuffed in it, the rest of it filled with plastic confetti, in strips with some kind of writing on them, "
+    c "but looked like brand new strips, the material felt like from a women's magazine cover in touch, but fluffier than the ones in the newsagents, shiny in the light."
+    c "The newsstand had disappeared over the years, but K remembered standing in front of a cold newsstand when he was a child, which was located near a government housing estate, a short walk from K's house and school."
+    c "The newsagent was run by an old man, who was careless and always seemed to be asleep. Whenever K thought he was asleep, he would secretly pick up a magazine and read it. "
+    c "If someone came from work to buy a newspaper, K would put the magazine back quietly and then calmly call out to the old man. "
+    c "In those days the newspaper buyers all looked the same, and K could easily guess from a distance. "
+    c "But K could not remember why he was standing there, perhaps he was waiting for someone, or perhaps he was just passing the time, the time of a child is always too long, "
+    c "but the way to pass the time is always limited to a few things. K imagines himself standing in front of the newsagent, the image as clear as if he had seen it with his own eyes, as if it had happened to someone else."
+    c "The familiar objects don't always fade away, like a warm summer rainstorm, they end abruptly at an unknowing moment."
+    c "The outside of the box is printed in blue with some foreign language, the edges shining as if they were gilded, a small sticker with the ingredients and the name in legible characters, "
+    c "so small that there are seven or eight characters crammed into a thumb-sized area, all screwed together. "
+    c "The milk tasted nothing like K remembered it, like a bag of pulp, with no taste, and K's stomach was upset after drinking it. "
+    c "But it was not a good idea to throw it away, so K just put the rest of the bottle in the fridge and left the box by the shoe cupboard."
+    c "K went for a takeaway one of these days, the site assigned him a car, took a shirt from the clothesline outside and handed it to him. "
+    c "K paid a deposit. The flat next to the side yard was the dormitory, and before K mentioned it, the owner showed K to the dormitory. "
+    c "There were eight people living in a balcony-like room. More people had come to work as riders recently than ever before, the owner of the site said, two of the bunks had been temporarily added."
+    c "K had been delivering takeaways for a few days, but the difference between being a deliveryman and being a teacher was so significant. "
+    c "For several days in a row K just sat with a group of people in uniform looking at their phones in a couple of large canteens nearby. K had nothing to read on his phone. So he browsed the app market and downloaded some apps. "
+    c "Most of them required an account, but some didn't. "
+    c "K was afraid of those hassles, so he only used the ones that didn't require registration. "
+    c "The ones that didn't require registration didn't last long, and after a few hours, K was asked to register again, so he could only delete them again and went back to the app shop to look for new ones."
+    c "Most of the work was done at lunchtime, but there was actually more work in the evenings, and K heard that the price per order was slightly higher, but K was always unable to get it. "
+    c "In the afternoon in the canteen, there would be some people who would sit quietly in front of you, saying that if you paid him some money, you would be able to get some night orders, "
+    c "but K ignored him, and there were not many people in the place to talk to him either, so he just sat and sat from the door to the innermost part of the canteen, "
+    c "Of course, the canteen was not open in the afternoon, and naturally there were no lights, only the electric fan hanging from the ceiling with a few red strings spinning, and nothing else could be heard."
+    c "So K had to deliver at noon every day under the hot sun. Within three or four days, K's arms were burning hot. "
+    c "In order to protect himself from the sun, K asked the station for a helmet and a pair of women's gloves that reached his elbows, "
+    c "but the size of the helmet was too small to fit K's head, so every time K stuffed his head inside, he felt even more stuffy and dizzy. "
+    c "K had to strap the helmet to the bike for most of the time, then put it back on after getting out of the bike and walking on the road to the customer's door."
+    c "K had been working for half a month, and the takeaway platform was supposed to be paid once after a day, "
+    c "but at least in this city, you don't get paid until the end of the month from the station deducted some handling fees and other miscellaneous things, "
+    c "and K did the math one night and found that the money he made was barely enough to get by, half a month's salary minus half a month's rent, and dozen bucks leftover for food and drink. "
+    c "But it seemed difficult to save money, not even counting utilities, electricity and other costs."
+    c "At night K was limp with exhaustion but could not sleep, the neon light of the city outside the window imprinted on the ceiling. "
+    c "The fan was turning slowly, and with each revolution, the iron blade reflected a little arc of light, creating a dark shadow on the ceiling."
+    c "K thought of just taking a train home, there is still some money left, buying a train ticket, and getting change two stations to arrive, "
+    c "they say that the place has developed, and become a model city, now going back maybe also considered to somehow pride, K thought in his heart, he got not much thing needs to be packed to luggage, "
+    c "but if K wants to pack up, it would always be a lot of things, when he stands on the train station with those packets. "
+    c "It would make people think that he is from the countryside and trying to get into a city, so it is not good to go back. "
+    c "K went to sleep with those thoughts, dreaming that he was sleeping on the train and the sun was not warm but shone on his face."
+    c "..."
+    c "K decided to hang on for a few more months, maybe try a few more jobs anyway. "
+    c "Fortunately, K always had the opportunity to poke around the shops. "
+    c "Most of the lunch orderers were university students, and then there were the employees of small companies. "
+    c "In fact, K used to deliver orders for a small company with five or six people, that company was almost empty, with a few tables, a water dispenser and an unnamed tree at the entrance, "
+    c "its branches twisted and twisted, with hardly any leaves on the top. There is a rubbish bin underneath the tree. These small companies are piled up in old fashion neighbourhood buildings. "
+    c "The layout of the rooms is often two bedrooms with a living room, each door always opens, and a kitchen, not quite the same size for storing cartons, "
+    c "which, if they didn't tell, you could never guess what type of business they hold. k stood at the door and knocked, and a couple of employees took in the strips of food and nodded heads to him, without saying a word."
+    $ i+= 1
+    call screen fishscreen0   
+
+label dialogue7:
+    $renpy.sound.play("audio/normalshort.mp3", loop=True)
+    c "......\n..."
+    c "..."
+    c "K went to work as a waitress in a restaurant, a local chain. "
+    c "He was checked out from the house with the ceiling fan and he rented a flat in the old quarter with another person, two bedrooms and one bathroom. "
+    c "The family made some phone calls and they heard somewhere that the education sector was being regulated, telling K to go back home and find a chance to get to the party, "
+    c "then get a qualification and concentrate on being a teacher afterwards. "
+    c "It's not too late for everything, since K want to engage in education, there is still a chance to do it, no big deal, to the maximum, only another few more years of exams."
+    c "K did not want to go back, he seemed to be tired of the examination and education. "
+    c "Life is like this, all of a sudden, something you've worked hard at for half your life just turns to no meaning, "
+    c "and if something you love so much comes out of someone's mouth it just has to become disgusting when you think about it during the rest of your life."
+    c "K don't know why K remember the old woman washing fruit in the hospital when he was on the phone, "
+    c "but K think maybe his parents were even older than her, K don't have any siblings, K had a sister once, "
+    c "he heard his relatives talking about her outside the door one night in the New year, he was not young anymore at that time, but he didn't remember he had a sister. "
+    c "They said that K's mother had got an intrauterine ring because of her, some police without uniforms had dragged her and the baby away together, and K's father was sitting in the next room, smoking to the fan, close his eyes."
+    c "The parents' tone was much gentle to K, the volume was also much lower and the voice was much older, the only thing that remained the same was the dialect vocabulary that had been spoken, with spittle-laden words."
+    c "K told them that he had found a job as an editor for the local children's newspaper. A former colleague's family was in the business and had taken him with them when they left the tutoring school."
+    c "K had been drinking heavily for a short time after this. "
+    c "The restaurant's staff all ate together after closing time in the evenings, and the chef in charge of the kitchen was one of several owners, who seemed to be relatives to each. "
+    c "The chef himself was particularly fond of giving people drinks, and had a brisk personality; "
+    c "he was a chef, as one could guess from a glance when drinking with him in front of the table. "
+    c "He wears a pair of thick lenses with greasy scars on them, hedgehog-like, inch hair interspersed with a bit of grey, a shiny oily face, a slightly larger belly, but also unusually strong from the shoulders to the arms, "
+    c "so never really looked fat. K didn't know if it was a good thing or a bad thing, "
+    c "but his daughter had spent some time in the tutoring school, so he always asked K to drink alongside him, always four or five beers before they went back. "
+    c "K had barely touched a drop of alcohol before this, mainly because he didn't think it was worthwhile. He repeatedly talks to K his adorable daughter and his little bit of psych wife, as everyone can see, "
+    c "a chief cannot really supervise his child to study. But the voice has no regret but little pride K thought."
+    c "K didn't know how many months he had been drinking, but those days passed so quickly that not long after, K would drink at home alone on the days. "
+    c "Soon afterwards, even after a few drinks at the table, K would return home and continue drinking with himself."
+    c "On those couple of days in a month when he didn't work, he would drink from the beginning to the end, leaving his mobile phone on while he drank, letting a min film video play from one to the next, "
+    c "and falling asleep while he drank, his phone also ran out of battery. There were times when K didn't go to work because of this. "
+    c "That master chief also advised K to drink less, everything will always get too bad if there is too much, he said."
+    c "One day K came home from the supermarket with a dozen beers and climbed back up to his flat on the seventh floor. K thought they really lived too high, and took a break in midway up the stairs. "
+    c "But still, he fell down when he was almost there and several bottles of beer beak to pieces and a dozen pieces of glass lodged in his arm."
+    c "K's roommate took him to the hospital, where he was put in the emergency ward and the doctor got those glasses out piece by piece with tweezers and put some medicine above the scare. "
+    c "The situation was not serious. It took so long only because K's house was too far away from the hospital, so after taking a taxi, K's mobile phone payment wouldn't work and he didn't have any cash, "
+    c "his flatmate didn't have any either, so they had to sit on the front door steps at the entrance of the hospital and wait for another worker to bring some money to them. "
+    c "In front of them were two stone lions, both without stone balls in their mouths."
+    c "The patients in the corridors of the hospital looked much more miserable than K. "
+    c "Three days later K went to the bank. Three days later K went to the bank and queued for a couple of hours, the bank said K had made an unusual purchase at that time and didn't let him swipe it. "
+    c "K put the rest of the money into the mobile app, not much, K dropped his phone in the water a few days ago, got a new phone, and drank every day, there was very little money left, "
+    c "but this then cost a few hours again. On the way back, K bought a bottle of 502 glue and gave a few doses to the soles of his shoes, which were a bit unstuck because of that fall from the stairs."
+    c "K called his roommate and the worker for dinner, he paid the bill, in front of a fried food stall on the roadside, the worker came from the south, loved spicy food, and was much younger than K. "
+    c "Only after dinner did K know that both of them had not reached twenty-five, but had come to work in the restaurant around eighteen, "
+    c "both of them wanting to learn and save some money to open a restaurant back to their hometown. After eating, he bought a bag of snacks for each of them at the nearby shop."
+    c "At night, K sat up in bed and figured he might need to quit drinking."
+    c "But it fails in the end, and in less than two weeks, K is drinking again, with his arm injury still fresh. "
+    c "In the morning, after brushing his teeth and washing his face, K looked in the mirror and saw the bruises reflected in the mirror. "
+    c "There was an indescribable pride, but also a sadness that could ever be. When he returned to his room, he drank his beer again from the morning."
+    c "K sat on the floor, dazed, when he got up that day he felt some kind of unusual fatigue, maybe more like fear, and eventually, K seemed to give up the fight and just went to sleep. "
+    c "As he slept, he dreamt that he was sitting on a train, an old-fashioned train with only a few people in the compartment, the chairs were dirty but soft, and K stroked the cushions of the site next to him. "
+    c "Outside the sun was shining brightly, you could see the mountains in the distance, and close by were large fields of bright yellow crops, on the eaves of the farmers' houses were sun-dried red peppers, "
+    c "the sun was warm as early spring, but there was no anxiety in the atmosphere. With the window open, K can still hear a few barking dogs. "
+    c "Several cats jump through the train aisle and disappear into the distant carriages, the silicone fence between the carriages is a little worn and swings with the train. "
+    c "The old man walks through the sunlight, clutching the handrail made of iron chains and walking over the plates between two trucks. "
+    c "The sledge of the train rattled regularly, and not far from there, stood a towering chimney, if you listened carefully, you could even hear the smoke boiling out of it. "
+    c "k was not sure where the train was going, of course, K could not know, but he realised it would always be a path to a happy journey."
+    c "One evening, K's uncle met K. K didn't know where he had found out where K lived, but K asked him to come into the room anyway. "
+    c "The uncle said he had been at the door for a long time and thought he had come to the wrong place when he saw K's flatmate go in. K's parents had asked him to come and see if everything was fine. "
+    c "He said K was too old to be fooled. "
+    c "But realistically speaking, he came anyway. He sat down on the chair further from the door and patted his stomach, his fingers thick and short, his palm small, exactly like K's. "
+    c "The nail caps were yellow and dirty in the crevices, and the nails of his pinky were deliberately kept long, they were yellow and thick, and looked like some type of badger that couldn't be named and lived underground all day. "
+    c "When he sat down, he smiled, as if looking for something to do, looked carelessly around the room, making some polite words, K also responded politely. "
+    c "When K got up to pour water, he suddenly said that K's parents were still mainly worried about whether K had met a suitable girl."
+    c "K had already guessed that he would ask this, but when K actually heard the word 'girl', his heart froze, like a stone was thrown down a well for a long time and just suddenly produced a strange sound, "
+    c "and his hands were sweating, K pretended to be busy, taking two cups back and forth and boiling some hot water for tea, but there was no tea bag in the flat, K and his roommate did not drink tea."
+    c "K couldn't remember what they said afterwards, or perhaps nothing at all. "
+    c "Before his uncle left, he noticed that K's phone was a new one, he touched it, held the screen, looked closely at the edges and asked K if it worked, K guessed that he had been looking at it for a long time. "
+    c "He padded the phone for another while, and finally give it back to K."
+    c "The next morning, K's uncle came to say goodbye, and the roommate opened the door while K was downstairs buying buns. When he came up he found the two of them already talking. "
+    c "K felt that his job had been exposed, but he didn't say anything, and when his roommate saw that K had returned, he said hello and went out. k shared half of the buns with his uncle, who also hadn't had breakfast yet."
+    c "He told him that he was leaving at noon, that he had just checked out of his room, that he was actually on his way here, that he had to go to another city to do something for his daughter, "
+    c "and that K hadn't listened too well to what he was saying, that it seemed to be about a wedding, but K thought to himself that it would be better if his aunt came too. "
+    c "K always wondered if there was something else in his words, a hint that he already knew about K's work, "
+    c "but in the end, there was nothing. k sent him downstairs and his uncle called K to call his parents, K answered and went off to work."
+    c "K's parents called K a few times while he was at work, but K didn't answer and only called back when he got home. The phone beeped a few times and K took long deep breaths. "
+    c "He wanted to go and get some beer but eventually gave up. Somehow drinking had become physically and mentally exhausting action."
+    c "Someone finally picked up the phone, but it wasn't K's mother's voice, "
+    c "so K explained that he was K. The person on the other side didn't understand at all and kept asking who this call was from. "
+    c "K cannot do anything but repeat he is K. Only after a couple of times did the other side suddenly seem to realise he is K and tell she was the youngest aunt of K. "
+    c "Repeatedly asked K a few times if she still remembered her. When K was a child, she fed K milk, using her legs to lock K's head, one hand twisted K's wrist, and the other hand fed K with the bottle. "
+    c "She seemed very proud when she said it, and the sound was loud. K was confused, as there were so many aunts in the family, and all of them seemed to be the same, so K couldn't figure out which one she was. "
+    c "At that moment K's mother took over the phone and talked to the aunt, but K couldn't quite make out the words. She picked up the phone and asked if her uncle had found K. "
+    c "She started talking about her uncle's daughter again, and this time K understood, it seemed that she was going to have a baby, and her father had gone to give her document in order to let the baby to be born officially, "
+    c "and by his way, he can see their new house, they seemed to just move in a new house, which the man's family had raised money to buy, and the uncle's family had been annoyed for this for a long time."
+    c "Aunt was still working in a street office, such work in these years began to retirement later, she was still working, can not be drawn out. "
+    c "After that and talking about other things, she talks around a large circle and back to K's uncle, "
+    c "K's mother is always not focused on a topic, K always feels restless to talk with her, like his chest has a gas has been holding, only an exhausted to listen to her circle around and around."
+    c "In the end, she didn't ask anything, not about K's job, not about how many girls K knew, and just hung up the phone after some circle talk. "
+    c "After she hung up, K guessed she was hoping that K would at least go back to see her once this year for New Year's Eve, so maybe then she would talk to K about it. "
+    c "In a couple of years, K will be 40. In his place, the age of the man is not very important, "
+    c "but in some big cities, the man must not only be a local resident, have sufficient assets and be in good health, "
+    c "but also be young and capable, and naturally, he must have at least a master's degree. But K couldn't save any money, his body was only proportionate, he wasn't young, "
+    c "and he wasn't educated, maybe five or six years ago, he could say that he had some potential for future development, but nowadays it was always more and more difficult. "
+    c "More importantly, K didn't want to get married either, he might have thought about having a child during his teaching days, but it was just something that anyone would think about, a sentimental, uninspired fantasy, "
+    c "K couldn't imagine what the child's mother would like, "
+    c "in fact, the child would look as uninspired as a fantasy printed on an industrial assembly line. "
+    c "From the city where he grew up and from the friends he did business with, life had somehow become an exile, but from when and from whom he had to flee, or where he needed to go at the end. K could not say. "
+    c "Some days he would just crouch under his bed, leaning on the wooden board on its side, watching the neon lights outside and the old people downstairs dancing along to the festive music. He was a little envious, "
+    c "but then he wanted to run away from that envy, but to where?"
+    c "K closed his eyes and pretended that he had fallen asleep, so that everything would fade away. "
+    c "But the more he protected himself from falling asleep, the more K couldn't sleep, and there were nights like this several times a year. "
+    c "K sat up in bed, looking at the door of his room, and in the distance, there was the sound of fireworks going up in the sky."
+    c "The next day his father called his phone, at night, when K was on his way back. "
+    c "Nearby a group of kids with backpacks chased one playing on a scooter, cursing some swear words, they ran into another alleyway. "
+    c "They only reached K's waist, with almost identical hair, their laughter echoing down the alley. K's father spoke shortly, with a commanding tone, "
+    c "asking K must come back around the new year, when his mother was still in the age of able to take care of his children. "
+    c "Halfway through the conversation, it was clear to K from that tone that he had known that K was at least no longer working on the newspaper."
+    c "K told him it must be after the New Year, when the schedule was filled and the train tickets must have been sold out. "
+    c "K's father paused in silence for a long time. Let K say the end of the year is the end of the year, he said."
+    c "K couldn't remember how the time had jumped to the end of the year, he had given up drinking, at least these days, except for some evenings at the restaurant where he didn't drink again. "
+    c "But the time tormented him a lot more, at night, and he sat on the edge of his bed, looking at the night sky, which was glowing red, that is from the lights of the buildings next to the river bank in the distance."
+    c "Many banquets were held during the New Year, and 16 or 17 couples got married, so those were probably some good days in fortune. "
+    c "By the time K got back to know, it was already the end of the New Year. Before he left K settled his wages, and the master of chiefs who had been looking after him squeezed his shoulders. "
+    c "The room had already been tide up, another worker had moved in, and had been sleeping in a bed made of wooden chairs in the living room for three days, "
+    c "so K took his luggage with him and invited his roommates to lunch before he left. It was a restaurant a few streets away from the old railway station."
+    c "K got on the train, with a little discouraged and a little relieved. "
+    c "Two of his flatmates had given him a bag of mandarin oranges, so he opened the bag and took two, rattling them away, bored by the weather, which was not good but constantly freezing. "
+    c "The tangerines were astringent and sour."
+    c "In the evening, K arrived at the interchange city and found a cheap hostel online. "
+    c "The double wooden bed kept creaking and creaking, and there was only one heater in the room, and that was facing the bed to K's right. "
+    c "K's feet were the only warm place for K. The upper half of his body was still cold to the deepest bone, even with the blanket on. No matter what, he couldn't sleep well that night."
+    c "But thanks to this, K slept comfortably on the train the next day, it was the passenger on the same seat who woke him up after arriving at his final station."
+    c "After leaving the station and walking around a circle of black cab drivers advertising their services, K saw his father standing not far away, his hands pulled behind his back, his back slightly slumped and immediately erected, "
+    c "K realised that he had also spotted K. There was a young man standing next to him, not yet twenty, with a moustache, neither too long nor too short, his skin grey and brown, showing the scruffiness which common to boys of that age. "
+    c "K's father said that he is K's nephew. The young nephew laughed at that immediately and rubbed both hands together. "
+    c "When the three of them got a taxi, the little nephew bumbled around, lifting K's bag and stuffing it into the back trunk."
+    c "On the way, K looked around at the landscape, which was not far from what he remembered, and wondered where the city could have gotten the name Model City. "
+    c "He counted how long it had been since the last time he'd been back and thought about it for a long while, he could not remember where he had spent those months. "
+    c "On the way, K looked around at the landscape, which was not far from what he remembered, and wondered where the city could have gotten the name Model City. "
+    c "He counted how long it had been since the last time he'd been back, and he wiggled his fingers quietly to try to count out for it. "
+    c "It cost for a long time, but his mind went blank, and he wasn't sure how the time tangle had brought him here. "
+    c "He simply gave up, and only when he was about to get out of the car, and just naturally remember that he had been home once in the year after he had moved to that city, "
+    c "and he thought that perhaps his uncle had learned his address at that time, but then he immediately remembered that he had moved house during those years. "
+    c "The latter question overruled the former, and before the first could be settled, a new one came out. k got out of the car, nothing could be further from the truth. He looked at the names of the small shops lining the street."
+    c "The driver turned on the driver's side light and leaned against the road waiting for them to take the luggage out,"
+    c "twisting on the radio and lighting a heel cigarette, smoke billowing out of the guest window, smoke that made the street even stranger. "
+    c "The young nephew bumbled again and took K's case out of the trunk, K said thank to him and he looked at K, a continuously sound grin that appeared to try to keep silent."
+    c "K and his family had just arrived at the courtyard gate when the family called his father to tell him that K's mother had fainted and they immediately ran into the house. "
+    c "k stood behind the gate while the family carried his mother to bed, long out of breath when the ambulance arrived. "
+    c "Then she was followed by a few hours of unsuccessful resuscitation at the hospital, and the doctor came out of the operating room, shaking his head."
+    c "During the night K's father and several other relatives prepared for the burial, just after the New Year, there were still only a few people staying on duty in many places, "
+    c "K's father and the others were making phone calls and running around, leaving K sitting alone on the doorstep of the house. "
+    c "After a long time, his father went to K and lit a cigarette, saying that tomorrow he had asked K's aunt to manage a place for K to meet a girl, seven or eight years younger than K."
+    c "He always felt that this girl was still too old, already over twenty-five, but his aunt said that it was better to take a look first. He told K to go to bed first, to take an early bath tomorrow and to wear a decent dress. "
+    c "They made the appointment at lunchtime, and K's father especially told K not to say anything about what happened that day, as it was disgusting."
+    c "When K got up the next day, his father was still in bed; K had slept for a long time that day, and the bed in his room was softer than he remembered, but the fabric was awful."
+    c "There were two children lying on the sofa in the living room, and some others had already stood in the doorway and chatting. "
+    c "His uncle was sitting on the steps smoking a cigarette and when he saw K, he said his father had a fever and was exhausted even in sitting, so they persuaded him to go back inside and rest. "
+    c "Must still be a bit of a mental shock, said the uncle, then took a drag on his cigarette, then he said his sister-in-law's family also had a bit of a cold and had called to say they would come later. "
+    c "He put out his cigarette, stood up from the steps and kicked his legs, patted K's arm, pulled it up a little and scratched it, stomped on the cigarette, "
+    c "and told K to put on more clothes, it was strangely cold and a few people he knows weren't feeling too well. "
+    c "K nodded, went back to the bathroom and took a shower, brushed his teeth, picked up a bench and sat in the corner of the living room. "
+    c "After a while, two or three more relatives arrived with two bags of breakfast, and two middle-aged men took the children to K's bed."
+    c "K ate his breakfast, said hello to the family and went out. Four or five people were still sitting at the table, and three or four younger ones stood in a circle. "
+    c "When they reached the door, the sister-in-law, who was talking to her uncle about something, asked K if he wanted a lift from her brother-in-law, "
+    c "and K politely declined, saying that it wasn't far and he was a bit nervous and needed to go out for some air."
+    c "K walked downstairs and not far away, on the ground floor of another building, a wedding was being held. "
+    c "A young man in a plain suit was squeezed in the middle of a group of middle-aged men, trying to pull at the door to squeeze into the room, and through the doorway, "
+    c "you could see a similar scene inside, except that the woman squeezed in the middle was a woman in a snow-white wedding dress. "
+    c "Outside the door of the building, a few people with mobile phones were videotaping, laughing with a few screams from inside, the screams made the people outside laugh even more, shouting one, two, one, two in unison, "
+    c "just like trying to win a school tug-of-war, two groups of people enjoying themselves as if it were an endless final match. "
+    c "A little closer to K there were two men with cigarettes in their mouths, peeling the skins of firecrackers to find the fuses. The sound of firecrackers only finally caught up with K when he walked to the block's entrance."
+    c "K had been gone for a long time. To the Japanese restaurant, they plan to meet in a shopping mall. "
+    c "The restaurant was booked by his aunt and uncle, his father had just sent K a locator last night. "
+    c "They say girls this day love those kinds of restaurants, which serve with a bit of upper-class style, "
+    c "but K had never gone to those restaurants or eaten Japanese food before, only knows people need to pay attention to etiquette here."
+    c "K was sitting on a chair in the waiting area at the entrance, his mind was empty and he was not thinking about anything else, a wave of anxiety came out of nowhere with the clock swinging, "
+    c "he could not stop it, his body kept sweating and K felt colder and colder. The waiter came out twice to invite K into the restaurant, but K declined, saying he was waiting for someone to join him."
+    c "After sitting there for almost half an hour, K's aunt called to say that the woman was sick, had a cold, very serious, couldn't even get out of bed, kept coughing, and would make another appointment at another time, "
+    c "and said that she was a bank counter, her job was very stable, she was only little bit taller, and face was a bit plain, she was healthy, and she was interested in K. "
+    c "K guessed she wanted to make K less worried. "
+    c "K was walking home with his phone in his hand, and his aunt talked for a long time about trivial things about the girl, and K wondered where she had heard it all, "
+    c "and K guessed she could even tell him how much she weighed and how many centimetres her thighs had recently gained if he really wanted to ask, and K thought she was tempting K to ask her about it, "
+    c "so that he could settle down and know that she knew the girl better than the girl herself. And she knew perfectly well that she had to take credit for K could possibly get close to such a girl."
+    c "When we got back, the volume truck came to the door, and the rowdy wedding crowd was gone, leaving a trail of firecracker crumbs. There were three or four plates of wreaths, "
+    c "as tall as K, set up on stands and leaning against the wall, in front of the building. When K entered the house, three or two women were cooking in the kitchen, a few dishes were already on the table, "
+    c "a few people were looking at their phones around the table, and three or two more families were sitting in the living room sofa. Father was still lying in his room. Uncle was a little surprised to see K." 
+    c "He asked him how he had got back so quickly, and K told him about the phone call from his aunt. "
+    c "He looked at the floor and said, It's okay, she said that girl's sick, it is certainly a bad cold. If she would not make it, let's make another appointment after. K said nothing and also looked at the floor."
+    c "Uncle patted his shoulder, took the phone and went out. "
+    c "K sat back down on the bench where he had been sitting that morning and stared at the door. "
+    c "There is a family sitting on the sofa looking at K and twisting the back of their child's palm, who looked like had only just started primary school, "
+    c "with a fat face and thinning hair tied in two strands above his ears, the length of which was no more than the outline of his ear, "
+    c "tied very tightly as if to overly emphasise the fact that the child's hair was actually very luxuriant. The pink feather boa looked particularly short-legged. "
+    c "The child looked back at her parents, climbed off the sofa and went to K. In a respectful, slurred voice, she said to him that her parents had asked him to sit next to them and her to sit on this bench. "
+    c "After she said this, she looked back at her parents again, her dad looked like he was holding back a laugh and her mum was staring at her with a grim expression. "
+    c "She looked away for a moment as if remembering something she had missed, and rushed to turn back, telling K that because K was her aunt's husband and she was the junior, she should sit on the bench and leave the place for K. "
+    c "After that, she looked back at her mother with very forgiving confidence, and K looked at her mother too, her mother got a hardly happy look, her mouth beaming and her eyes narrowed into crescent shapes, "
+    c "and K saw in the child's eyes something buried in time, a shadow of silence. After a while, her mother corrected her that K wasn't her aunt's husband, that man was smoking at the door. "
+    c "K wanted to comfort her, to hold her hand and say that it would be all right somehow in the future, that one day it would all be over, that there would be no more confused stranger around, "
+    c "that she could sit on the sofa if she wanted to, date someone if she wanted to, nobody knows her life, nobody could interfere it."
+    c "But K did nothing. K seemed to be in a trance for a moment or seemed to be running away from his own cowardice. "
+    c "When he came to his senses, the girl was back sitting between her parents, staring blankly out of the window, her father looking at his phone and her mother looked at another, talking to her daughter about something, "
+    c "and it was only then that K noticed that the girl was also wearing two cuffs with the same colour as her duvet. Only in the sunlight, do the two reflect a very different sheen."
+    c "K was a little dizzy, a kind of impotent loathing coursing through his veins, but now that he was almost forty, even the loathing seemed strained. Tired, he walked straight out." 
+    c "A few relatives turned to ask him where he was going, and he made up an excuse that he would buy some snacks for the children."
+    c "He hadn't gone far when his uncle called to tell him to go back for dinner. "
+    c "Before he could walk a few steps, his uncle called again and K looked a little impatient, wanting to drop the phone here and go somewhere where the sun didn't shine, "
+    c "K took a few breaths before answering the phone and crouched on a stone cairn on the side of the road. "
+    c "The uncle said that K's father was having difficulty to breathe and that some of his great-aunts had already called the emergency services, "
+    c "telling K to come back quickly and take the ambulance with his uncle, saying that there might also have to have some relatives to sign off."
+    c "K hung up the phone, his dizziness getting worse, and he slowly stood up, breathing out a few more times as he tried to think of nothing else and walked towards the house at a step that seemed as slow as possible."
+    c "When he entered the house, the corridor from the living room to the master bedroom was blocked, and there was a stew cooking in the kitchen, steam spewing from the pressure cooker valve. "
+    c "Relatives were blocking the bedroom doorway, but there was no one inside. No one seems to notice K., who sits on the steps of the front door with his head turned away. "
+    c "A couple of minutes later a pair of masked doctors stood downstairs with a stretcher, and his uncle dug through the crowd and hurried down to bring someone up, shouting to K at the gate to remind K to catch up. "
+    c "A couple of men dug through a pile of relatives and lifted and pushed K's father onto the stretcher. "
+    c "Then the uncle called for them to go outside to make room for the stretcher, before moving him out with the four doctors. "
+    c "He shouted for them to eat first while he and K went to the hospital. When they got down to the entrance of the building, some doctors took the stretcher inside the car, he pushed K's back and got into the car with him."
+    c "There were two people sitting in the front of the car, separated from the rear compartment by only a glass mirror made of plastic connecting them to each other. "
+    c "Apart from that glass mirror, there were only two other palm-sized glasses left in the carriage on either side of the body. "
+    c "There was some traffic on the road, and apart from K and his uncle, there were two other doctors sitting inside. "
+    c "One of them attached a breathing apparatus to K's father, while the other took some blood and asked K's uncle to sign some paperwork, which he looked at it for a while and handed back to K."
+    c "The uncle asked him how is the situation. The doctor said he didn't actually know, but he had been getting a lot of patients like this lately, all with fever and breathlessness. "
+    c "Unlike the vast majority of doctors, he was a very talkative type. "
+    c "K's uncle took out a cigarette and tried to hand it to him, but before he could do so, he put it back in his pocket as if on cue, and the doctor smelled to him. "
+    c "The uncle asked him if it was some kind of flu, his own sister's family all had fevers too. "
+    c "The doctor confessed that he didn't know this either, that he was just a trainee doctor, only that a couple of old doctors in the ER had been taken out from the hospital last week for talking about it, "
+    c "a couple of men in fleece jackets had come to take them away one afternoon before they get out from the hospital, they had argued for a while in the conference room, "
+    c "and that three or four nurses had heard two or three yells from the nurses' desk not far away from that room. "
+    c "Before he could finish, the doctor next to her poked him twice, they looked at each other and he smiled again and said to Uncle K that it wasn't too much of a problem,"
+    c "the weather these days was dry and cold and older people were very prone to this. "
+    c "Uncle laughed and said that he was relieved. The doctor then asked K if his father had any genetic disorders and what he had eaten last night, "
+    c "K sat at the end of the car listening as the car seemed to sway more than it had at first, and he subconsciously grabbed the armrest by the door and spread his body out on the inside."
+    c "The day after, K went to the hospital twice in the morning and evening, and his father's sister-in-law said she would send some food to K's father. "
+    c "But when K arrived at the hospital, his father was more feverish than before, talking incoherently, unable to keep his eyes open, let alone eat, and when he returned in the afternoon, "
+    c "the woman asked him to deliver again in the evening to see if he was better. "
+    c "The ward was crammed with seven beds, each with a patient on it, and a similar catheter was plugged in their face, each with a stool, and two people sitting on chairs, lying on the end of the bed, sleeping like that. "
+    c "He dragged the nurse on duty to take his temperature, but everything was normal. The hospital was in a mess, and the nurse said that it had been loaded like this almost two weeks ago, "
+    c "so naturally he couldn't afford to do more tests on K."
+    c "K returned in the afternoon and took his mother's body to the funeral hall with everyone else. "
+    c "The family sat around the flowerbeds under the building, waiting for K to return, the children digging in the dirt with branches, holding each other up, they seemed to have become friends at some point. "
+    c "A group of musicians hired to play the suona were crouched in a trailer, and there were two or three other cars behind them, most of the relatives were already in the cars, this must have cost a lot of money, K thought. "
+    c "The driver stared at the nearby cars, deep into his eyes always showing some panic, he was much younger than K, probably only twenty, and K guessed he was trying to hide from the police cars, "
+    c "K wasn't sure if this practice was considered to be legal or not nowadays. After all, it is a Model City."
+    c "K spent the night at the funeral hall while some aunts cooked dinner at K's house and brought it to K with the keys and the food. "
+    c "k then took a taxi to the hospital to see his father, who was still in as the same condition as at noon, and the nurse said impatiently that it was impossible to eat in this condition. "
+    c "k had to go back, put the food box in the fridge and look in his father's room for his health insurance card and other sorts of documents. "
+    c "When K was on the way back his uncle called to ask K if he knew where they were, but K couldn't find them, maybe they had been hidden somewhere by his father, K thought. "
+    c "He tidied up the house, which was actually quite clean, probably cleaned before and K just looked around making sure everything was locked, walking around the small house. "
+    c "Finally, take a taxi back to the funeral hall. The two trips were frighteningly far and K had almost no money left when he got off the bus, he wasn't sure where his father had saved all his money, he hadn't asked before. "
+    c "The ambulance and emergency room were paid for by his uncle, who had gone home in someone else's car first. "
+    c "The few relatives left at the funeral hall were sparse, and when they saw K, they all came up to talk to him, "
+    c "and the few who were standing far away had to be introduced by an uncle before they knew that K was his mother's son, and they all laughed and patted K a few times, to which K responded with a smile. "
+    c "They talked about where a group of them had travelled and what ludicrous trivialities they had done in the local jewellery shop. "
+    c "They said K must have been there too, along with a couple of other kids of about the same age, K couldn't remember how, but he smiled in agreement anywhere."
+    c "When they had gone back, K sat down in his chair, anxious and tired, and underneath that anxiety, the calmness that was like stagnant water underground made him tired, "
+    c "so much had settled long ago without a ripple, but only now did it reverberate, and K wasn't sure if he had waited too long, or if things had come too quickly. "
+    c "He rested for a while with his eyes closed, and another man dressed as a monk tapped him, selling him some Buddhist beads and scriptures. "
+    c "The monk was pitifully thin, with long, slender eyebrows but a clean face with a clean-shaven beard, so K could not distinguish his gender when he stood away. "
+    c "K didn't want to say no to him, But the monk persisted again, looking as enthusiastic as if it was his first time in the business. In the end, K had to make up an excuse to escape."
+    c "Outside the building, K walked around the funeral hall for half an hour, his bones felt like they were falling apart and he was exhausted. "
+    c "The funeral hall was in a village and town, a cottage building but built broad, with four or five halls inside, some street lights around it, but further away it was pitch black, and nothing was left."
+    c "The next morning K woke up before dawn, he was dizzy, sleeping in a chair made his neck unusually difficult, twisting his head with some effort, "
+    c "his bones still felt like they were falling apart, sweating all his life, he always felt unable to walk, and after a few hours of confusion, "
+    c "when a group of great-aunts arrived, one of them touched his head and immediately took him to the hospital as well. "
+    c "k lay in the ward, breathing heavily, tinnitus so severe that K felt that it didn't matter what happened now. He just fell asleep."
+    $ i+= 1
+    call screen fishscreen0   
+
+
+label dialogue8:
+    $renpy.sound.play("audio/normalshort.mp3", loop=True)
+    c "......\n..."
+    c "..."
+    c "And when he woke up, he...I went to that beach. "
+    c "Like an innate instinct, I knew that I was alone there, that it was a metaphysical world. Everything...everything, everyone, was away from me. "
+    c "There is nothing left for me, and I understand that here I can only wait for the imaginary you to come."
+    c "Luckily this is one of those metaphysical shores where I don't get bored while waiting for you, where there are the latest comics, the most popular novels, the hottest movies, and of course, the highest-rated games. "
+    c "I always hope that one day I'll have so much time that I can finally play games that were previously only available to see in those short videos on my phone, "
+    c "and watch movies that only get in touch with from a few minutes abbreviated ..."
+    c "but the truth is that I've been getting bored lately, at first it was fun, but over and over again, I don't know when the problem started, "
+    c "although there are still some of them that catch my eye, it's so rare that it's like looking for particular sand in the desert, and beyond that, it's not even basic entertainment anymore. "
+    c "Pleasure is ultimately bittersweet, I guess. One day I tried going over the hill and found a huge, graveyard-like landfill there. "
+    c "I knelt down, rummaged around and found the version of the cassette. "
+    c "I picked it up, put it in the player, and to my surprise, I fell asleep to Judy Bridgewater's Never Let Me Go, and woke up in the middle of the Beatles' Norwegian Wood. "
+    c "Those were the days when I lived on that mountain of rubbish, reading books that had nothing to do with fun during the day and falling asleep to music at night. "
+    c "If you looked hard enough in the mountains, you could probably find the entire Hatfield collection."
+    c "Somehow, as the days went on, I became more interested in these things. I wonder if I'd had access to all this earlier..."
+    c "maybe earlier than I meant to, before some big point in my life, maybe I could have let it all go, let go of it all, had my own life, had a life of my own. "
+    c "But anyway, that's in the past, and even my footprints on the beach have been since been washed away by the waves at the start..."
+    c "At the end of the day, for the time being, you are just a figment of my imagination, I don't know you."
+    c "You may have had the same inch of hair as I did at one point in time, or you may have had long hair, I don't know, I always have, I know too little about the important things and my imagination is totally lacking, "
+    c "it's like remembering someone's face but not the clothes they took a lot of work to dress up in."
+    c "But I believe that if you do exist, maybe you have some chance, maybe... you can always find your own world when you look back again. After all, this is such a place in the universe, and Sisyphus rolled the boulders for it."
+    c "In a few moments, we will be soon on shore, and it seems that too many irrelevant words have been spoken, and the essential things have just been avoided once again."
+    c "The book is then yours after, do it as you please. But I hope you'll do it for him...for K, for the brainless and the unhappy, for the children who watch the trains, for those who continue to write a better..."
+    c "and, crucially, a past that belongs to you as well as to them. I believe you can do better than I did."
+    c "Me? I might go back to that beach and wait for you to come back next time..."
+    c "...If you ask me today, if I still love games .... Or anything."
+    c "Perhaps love is the only option, but in any case, such words are always empty and unintentional."
+    c "It's always easier to admit to loving something than to fall in love with it. In the end, only retrospective beliefs remain."
+    c "Humans are a creature of faith, but is there really any substantial love beyond faith."
+    c "Where did natural beings get the right to love someone or something that is not theirs at all?"
+    c "Perhaps it is the same as the popular and old joke...that readers sleep at the top of their ivory towers, oblivious to what is really going on in the world."
+    c "It's not too much to say that to me actually, this journey is nothing more than my own quackery."
+    c "Great works always seem to need to show a line of hope in the end. Whether it's towards that stereotype, culture, ideology or rule, one has to jump into there."
+    c "Otherwise, someone has to die, and when they do, the rest of us are still alive. Whether it's pushing rocks up a mountain or setting sail. Some people have to live as they always do."
+    c "The sun must rise as it always does."
+    c "I left the Sisyphus at the foot of the mountain, Camus said."
+    c "I suppose I'll have to leave everything to you now."
+    c "I have left everything I should, even a little bit of things that I should not have left to you."
+    c "I suppose I've always run away, both in fear of the sun sinking round and round, and afraid to really let a character die."
+    c "That's why I wish such a voyage could be rowed forever like a relay race, but of course, anyone knows that there is always an endpoint."
+    c "'It's just that my biggest flaw is that my flaws expand rapidly with age, "
+    c "which is to say that I have a chicken inside me, and when the chicken grows up it becomes a goose, and when the goose grows up it becomes a sheep, and when the sheep grows up again it becomes a cow ....' "
+    c "Perhaps this description is the most representative of the beauty of words."
+    c "...."
+    c "In short, I spend my life on a boat like this, unable to leave the house for more or less a few days a month, "
+    c "and spending the rest of my time trying to make a living, trying to love someone, and trying to believe that I still love this life and work. "
+    c "People come in from the gulfs of nowhere and return to the land of nowhere. That's how life is, anyway. At least once, they set up a feast and danced here."
+    c "I suppose a voyage like this could only end in such a fiasco, even at the end of which it is still unclear where it is going."
+    c "But at this point fiasco seems to be the only decent artistic way left."
+    c "Action always makes mistakes .... But eventually one has to act."
+    c "It's your journey now, and I think you have to make your own way."
+    c "It's up to you, whether you curse it, burn it, or leave it as it is."
+    stop sound fadeout 1.0
+    hide groundcorrect
+    show ednew
+    with renpy.pause(4.07, hard=True)
+    hide ednew
+    $renpy.sound.play("audio/edconnect.mp3", loop=True)
+    show blackscreen
+    hide op
+    #s = 1
+    c "Of course, if you can, you'll always be expected to leave your own part of the journey behind, whatever that may be. After all, that's what the world was built for."
+    c "As Imlay writes in that old diary:"
+    c "You have built this ship and we are sailing in it together."
+    c "It is a ship for all of us."
+    c "But, in any case, we cannot steer the currents that sweep us away."
+    c "So what do you need to keep the captain for?"
+    c "...."
+    hide blackscreen
+    hide op
+    stop sound fadeout 1.0
+    show ed2
+    play sound "audio/ed.mp3"
+    with renpy.pause(20.30, hard=True)
+    stop sound fadeout 1.0    
+    show write
+    # 此处输入游戏玩法function。
+    #$ textboxsize = 1
+    $renpy.sound.play("audio/writting.mp3", loop=True)
+    python:
+        import os.path
+        import os
+        savePath = config.basedir + "/resource/"
+        if not os.path.exists(savePath):
+            os.makedirs(savePath)
+        complete_dir = os.path.join(savePath, "examplewrite" + ".txt")
+        file = open(complete_dir, "r+")
+        threshold = True
+        while threshold:
+            input_txt = renpy.input('Press Enter to turn the page, write END ONLY in a page to leave the file: ', length = 210)
+            if input_txt != 'END':
+                file.write("{}\n".format(input_txt))
+            else:
+                threshold = False
+        file.close()  
+    $ textboxsize = 0
+    u "您输入的文本已经被储存到游戏根目录下的'resource.txt'文件里"
+    u "您可以在游戏外自由打开，浏览，以及修改此文件且不会对游戏产生任何影响"
+    u "游戏设计，制作，发行：Marine Studio"
+    u "摄影：Ruri，社交账号管理：Leanpus"
+    u "海报AI渲染：Glaze， 游戏引擎：Renpy"
+    u "可在游戏目录下‘Credit.txt’文件中获取详细信息"
+    u "感谢你的游玩！谢谢！"
+    stop sound fadeout 1.0
+
+    # 此处为游戏结尾。
+
+    return
+
